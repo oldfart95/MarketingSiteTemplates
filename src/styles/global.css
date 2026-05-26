@@ -23,3 +23,14 @@ a:focus-visible,button:focus-visible { outline:2px solid #0f172a; outline-offset
 .muted-bg{background:#f8fafc}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.prose{max-width:50rem}.marketing-footer{background:#f1f5f9;border-top:1px solid #cbd5e1;padding:1.5rem 0}
 input,textarea{width:100%;padding:.5rem;border:1px solid #94a3b8;border-radius:.35rem}
 @media (max-width:900px){.hero-grid,.two-col{grid-template-columns:1fr}}
+
+.comparison-section{background:#f8fafc;border:1px solid #cbd5e1;border-radius:1rem;padding:1.25rem;margin-top:1.5rem}
+.comparison-intro{max-width:60ch;color:#334155}
+.comparison-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.comparison-card{background:#fff;border:1px solid #cbd5e1;border-radius:.85rem;padding:1rem}
+.comparison-card h3{margin:.1rem 0 .45rem 0}
+.comparison-card p{margin:.35rem 0 .8rem 0;color:#334155}
+.comparison-card ul{margin:0;padding-left:1.1rem;display:grid;gap:.35rem}
+.comparison-card.starter{border-top:4px solid #38bdf8}
+.comparison-card.professional{border-top:4px solid #22c55e}
+@media (max-width:900px){.comparison-grid{grid-template-columns:1fr}}
