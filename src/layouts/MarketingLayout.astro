@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { sitePath } from '../lib/paths';
 const {
   title = 'Local Business Website Factory',
   description = 'Websites for local businesses that need calls, trust, and speed.',
@@ -17,14 +18,14 @@ const {
     <a href="#main" class="skip-link">Skip to content</a>
     <header class="marketing-header">
       <div class="container nav-wrap">
-        <a href="/" class="brand">Website Factory</a>
+        <a href={sitePath()} class="brand">Website Factory</a>
         <nav aria-label="Primary navigation" class="nav-links">
-          <a href="/offer-site/services">Services</a>
-          <a href="/offer-site/examples">Examples</a>
-          <a href="/offer-site/pricing">Pricing</a>
-          <a href="/offer-site/process">Process</a>
-          <a href="/offer-site/faq">FAQ</a>
-          <a href="/offer-site/contact" class="nav-cta">Start Project</a>
+          <a href={sitePath('offer-site/services')}>Services</a>
+          <a href={sitePath('offer-site/examples')}>Examples</a>
+          <a href={sitePath('offer-site/pricing')}>Pricing</a>
+          <a href={sitePath('offer-site/process')}>Process</a>
+          <a href={sitePath('offer-site/faq')}>FAQ</a>
+          <a href={sitePath('offer-site/contact')} class="nav-cta">Start Project</a>
         </nav>
       </div>
     </header>
@@ -34,7 +35,7 @@ const {
     <footer class="marketing-footer">
       <div class="container">
         <p><strong>Local Business Website Factory</strong> builds static, fast-loading websites for local small businesses.</p>
-        <p><a href="/demo-library/">Browse demo library</a></p>
+        <p><a href={sitePath('demo-library/')}>Browse demo library</a></p>
       </div>
     </footer>
   </body>

@@ -1,5 +1,6 @@
 ---
 import type { BusinessProfile } from '../../types/site';
+import { sitePath } from '../../lib/paths';
 type Props = { business: BusinessProfile };
 const { business } = Astro.props as Props;
 ---
@@ -12,7 +13,7 @@ const { business } = Astro.props as Props;
     </div>
     <div class="contact-card">
       <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
-      <a href="/site/contact" class="button button--ghost">Use the contact form</a>
+      <a href={sitePath('site/contact')} class="button button--ghost">Use the contact form</a>
     </div>
   </div>
 </section>

@@ -1,5 +1,6 @@
 ---
 import MarketingLayout from '../layouts/MarketingLayout.astro';
+import { sitePath } from '../lib/paths';
 ---
 <MarketingLayout title="Websites for Local Businesses | Website Factory" description="Productized static websites for local businesses that need calls, trust, and speed.">
   <section class="hero-section">
@@ -9,8 +10,8 @@ import MarketingLayout from '../layouts/MarketingLayout.astro';
         <h1>A practical website offer for owners who need a stronger online presence fast.</h1>
         <p>We turn your intake into a polished static site with clear service messaging, trust proof, and a direct call-to-action flow. No CMS overhead, no plugin maintenance.</p>
         <div class="cta-row">
-          <a class="button-primary" href="/offer-site/contact">Start Project Intake</a>
-          <a class="button-secondary" href="/offer-site/examples">See examples</a>
+          <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
+          <a class="button-secondary" href={sitePath('offer-site/examples')}>See examples</a>
         </div>
       </div>
       <div class="panel">

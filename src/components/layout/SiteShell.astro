@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import { buildLocalBusinessJsonLd } from '../../lib/site';
+import { sitePath } from '../../lib/paths';
 import type { BusinessProfile, SiteTheme, TemplateConfig } from '../../types/site';
 type Props = {
   business: BusinessProfile;
@@ -11,13 +12,14 @@ type Props = {
 };
 const { business, template, theme, pageTitle, pageDescription } = Astro.props as Props;
 const navItems = [
-  ['Home', '/site/'],
-  ['Services', '/site/services'],
-  ['About', '/site/about'],
-  ['Work & Reviews', '/site/proof'],
-  ['Contact', '/site/contact']
+  ['Home', sitePath('site/')],
+  ['Services', sitePath('site/services')],
+  ['About', sitePath('site/about')],
+  ['Work & Reviews', sitePath('site/proof')],
+  ['Contact', sitePath('site/contact')]
 ];
-const jsonLd = buildLocalBusinessJsonLd(business);
+const siteUrl = Astro.site ? new URL(sitePath('site/'), Astro.site).toString() : sitePath('site/');
+const jsonLd = buildLocalBusinessJsonLd(business, siteUrl);
 ---
 <!doctype html>
 <html lang="en">
@@ -41,7 +43,7 @@ const jsonLd = buildLocalBusinessJsonLd(business);
         </div>
       </div>
       <div class="container header-main">
-        <a class="brand" href="/site/" aria-label={`${business.businessName} home`}>
+        <a class="brand" href={sitePath('site/')} aria-label={`${business.businessName} home`}>
           <span class="brand-mark">{business.businessName.charAt(0)}</span>
           <span>
             <strong>{business.businessName}</strong>
@@ -49,7 +51,7 @@ const jsonLd = buildLocalBusinessJsonLd(business);
           </span>
         </a>
         <div class="header-actions">
-          <a href="/site/contact" class="button button--ghost">{business.cta.secondaryLabel}</a>
+          <a href={sitePath('site/contact')} class="button button--ghost">{business.cta.secondaryLabel}</a>
           <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
         </div>
       </div>

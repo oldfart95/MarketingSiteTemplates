@@ -26,7 +26,7 @@ export const getGalleryImages = (business: BusinessProfile): GalleryImage[] => {
   ];
 };
 
-export const buildLocalBusinessJsonLd = (business: BusinessProfile) => ({
+export const buildLocalBusinessJsonLd = (business: BusinessProfile, url = '/') => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: business.businessName,
@@ -35,7 +35,7 @@ export const buildLocalBusinessJsonLd = (business: BusinessProfile) => ({
   email: business.email,
   address: business.address,
   areaServed: business.serviceArea,
-  url: '/',
+  url,
   makesOffer: business.services.map((service) => ({
     '@type': 'Offer',
     itemOffered: {

@@ -1,5 +1,6 @@
 ---
 import type { BusinessProfile } from '../../types/site';
+import { sitePath } from '../../lib/paths';
 type Props = { business: BusinessProfile };
 const { business } = Astro.props as Props;
 ---
@@ -11,7 +12,7 @@ const { business } = Astro.props as Props;
       <p class="body-copy">Local city mentions are kept visible for customers and practical SEO.</p>
     </div>
     <div class="area-grid">
-      {business.serviceArea.map((area) => <a href="/site/contact">{area}</a>)}
+      {business.serviceArea.map((area) => <a href={sitePath('site/contact')}>{area}</a>)}
     </div>
   </div>
 </section>

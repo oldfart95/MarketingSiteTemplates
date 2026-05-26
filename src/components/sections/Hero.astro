@@ -1,5 +1,6 @@
 ---
 import type { BusinessProfile, IndustryConfig } from '../../types/site';
+import { sitePath } from '../../lib/paths';
 type Props = { business: BusinessProfile; industry: IndustryConfig };
 const { business, industry } = Astro.props as Props;
 ---
@@ -10,8 +11,8 @@ const { business, industry } = Astro.props as Props;
       <h1>{business.slogan}</h1>
       <p class="lead">{business.shortDescription}</p>
       <div class="action-row">
-        <a href="/site/contact" class="button button--solid">{business.cta.primaryLabel}</a>
-        <a href="/site/services" class="button button--ghost">{business.cta.secondaryLabel}</a>
+        <a href={sitePath('site/contact')} class="button button--solid">{business.cta.primaryLabel}</a>
+        <a href={sitePath('site/services')} class="button button--ghost">{business.cta.secondaryLabel}</a>
       </div>
       <div class="trust-row">
         {(business.trustBadges ?? industry.trustBadges).slice(0, 4).map((badge) => <span>{badge}</span>)}
