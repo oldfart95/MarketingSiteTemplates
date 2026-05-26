@@ -1,0 +1,15 @@
+---
+import MarketingLayout from '../../layouts/MarketingLayout.astro';
+---
+<MarketingLayout title="Start Project | Website Factory" description="Start your website project with intake details.">
+  <section class="content-section"><div class="container prose">
+    <h1>Start Project</h1>
+    <p>Email intake fallback: <a href="mailto:hello@example.com?subject=Website%20Project%20Intake">hello@example.com</a></p>
+    <form aria-label="Project intake form">
+      <p><label>Name<br /><input type="text" name="name" required /></label></p>
+      <p><label>Business Name<br /><input type="text" name="business" required /></label></p>
+      <p><label>What you need<br /><textarea name="needs" rows="5" required></textarea></label></p>
+      <button type="submit" class="button-primary">Submit Intake</button>
+    </form>
+  </div></section>
+</MarketingLayout>
