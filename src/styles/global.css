@@ -1187,6 +1187,47 @@ h3 {
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 
+.comparison-section {
+  border: 1px solid rgba(148, 163, 184, 0.42);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(248, 250, 252, 0.96), rgba(255, 255, 255, 0.98));
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+}
+
+.comparison-section > h2 {
+  max-width: 54rem;
+}
+
+.comparison-intro {
+  max-width: 64ch;
+  color: #475569;
+}
+
+.comparison-card.starter {
+  border-top: 4px solid #0ea5e9;
+}
+
+.comparison-card.professional {
+  border-top: 4px solid #16a34a;
+}
+
+.comparison-card h3 {
+  margin-top: 0;
+}
+
+.comparison-card p {
+  color: #475569;
+}
+
+.comparison-card ul {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 0;
+  padding-left: 1.2rem;
+}
+
 .comparison-card--weak {
   background: #f8fafc;
   color: #334155;
