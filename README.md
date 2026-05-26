@@ -1,6 +1,6 @@
 # Master Small Business Website System
 
-A practical static website factory for rapidly generating polished local business websites from structured data.
+A practical static website system for rapidly generating polished local business websites from structured data.
 
 This repo started as a set of high-quality Astro templates. The current system keeps that visual work and wraps it in a cleaner, configurable architecture for repeatable client delivery.
 
