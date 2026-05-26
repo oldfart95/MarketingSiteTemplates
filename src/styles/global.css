@@ -10,3 +10,16 @@ a:focus-visible,button:focus-visible { outline:2px solid #0f172a; outline-offset
 .h-64{height:16rem}.h-72{height:18rem}.w-full{width:100%}.object-cover{object-fit:cover}.max-w-3xl{max-width:48rem}.list-disc{list-style:disc}.pl-6{padding-left:1.5rem}.uppercase{text-transform:uppercase}.tracking-wider{letter-spacing:.05em}.underline{text-decoration:underline}
 .text-white{color:#fff}.text-slate-600{color:#475569}.text-slate-700{color:#334155}.bg-slate-50{background:#f8fafc}
 @media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+.container{max-width:72rem;margin:0 auto;padding:0 1rem}
+.skip-link{position:absolute;left:-999px;top:auto}.skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;border:1px solid #000}
+.marketing-header{background:#0f172a;color:#fff;border-bottom:1px solid #1e293b}.nav-wrap{display:flex;justify-content:space-between;align-items:center;padding:1rem 1rem;gap:1rem;flex-wrap:wrap}
+.brand{font-weight:700;color:#fff;text-decoration:none}.nav-links{display:flex;gap:.9rem;flex-wrap:wrap}.nav-links a{color:#dbeafe;text-decoration:none}.nav-cta{padding:.45rem .75rem;border:1px solid #93c5fd;border-radius:.45rem}
+.hero-section{background:linear-gradient(135deg,#0f172a,#1e3a8a);color:#eff6ff;padding:3rem 0}.hero-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.25rem}.eyebrow{font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:#bfdbfe}
+.button-primary{display:inline-block;background:#22c55e;color:#052e16;padding:.65rem 1rem;border-radius:.5rem;text-decoration:none;font-weight:700;border:none}
+.button-secondary{display:inline-block;background:transparent;color:#eff6ff;padding:.62rem 1rem;border-radius:.5rem;text-decoration:none;border:1px solid #93c5fd}
+.cta-row{display:flex;gap:.8rem;flex-wrap:wrap}.panel{background:#111827;border:1px solid #334155;padding:1rem;border-radius:.75rem}
+.content-section{padding:2.5rem 0}.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}.card{background:#fff;border:1px solid #cbd5e1;border-radius:.75rem;padding:1rem}
+.muted-bg{background:#f8fafc}.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem}.prose{max-width:50rem}.marketing-footer{background:#f1f5f9;border-top:1px solid #cbd5e1;padding:1.5rem 0}
+input,textarea{width:100%;padding:.5rem;border:1px solid #94a3b8;border-radius:.35rem}
+@media (max-width:900px){.hero-grid,.two-col{grid-template-columns:1fr}}

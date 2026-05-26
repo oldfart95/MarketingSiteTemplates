@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+const {
+  title = 'Local Business Website Factory',
+  description = 'Websites for local businesses that need calls, trust, and speed.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="marketing-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">Website Factory</a>
+        <nav aria-label="Primary navigation" class="nav-links">
+          <a href="/offer-site/services">Services</a>
+          <a href="/offer-site/examples">Examples</a>
+          <a href="/offer-site/pricing">Pricing</a>
+          <a href="/offer-site/process">Process</a>
+          <a href="/offer-site/faq">FAQ</a>
+          <a href="/offer-site/contact" class="nav-cta">Start Project</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="marketing-footer">
+      <div class="container">
+        <p><strong>Local Business Website Factory</strong> builds static, fast-loading websites for local small businesses.</p>
+        <p><a href="/demo-library/">Browse demo library</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
