@@ -1,0 +1,22 @@
+---
+import type { BusinessProfile, IndustryConfig } from '../../types/site';
+type Props = { business: BusinessProfile; industry: IndustryConfig };
+const { business, industry } = Astro.props as Props;
+const faqs = business.faqs.length > 0 ? business.faqs : industry.faqExamples;
+---
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Questions</p>
+      <h2>Answers that reduce hesitation</h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((item) => (
+        <details>
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

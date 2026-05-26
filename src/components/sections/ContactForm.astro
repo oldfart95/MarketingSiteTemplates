@@ -1,0 +1,31 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<form class="intake-form" name="contact" method="POST" data-netlify="true" action={`mailto:${business.email}`}>
+  <input type="hidden" name="form-name" value="contact" />
+  <label>
+    Name
+    <input name="name" type="text" autocomplete="name" />
+  </label>
+  <label>
+    Email
+    <input name="email" type="email" autocomplete="email" />
+  </label>
+  <label>
+    Phone
+    <input name="phone" type="tel" autocomplete="tel" />
+  </label>
+  <label>
+    Service needed
+    <select name="service">
+      {business.services.map((service) => <option>{service.name}</option>)}
+    </select>
+  </label>
+  <label>
+    Message
+    <textarea name="message" rows="5"></textarea>
+  </label>
+  <button class="button button--solid" type="submit">Prepare Request</button>
+</form>

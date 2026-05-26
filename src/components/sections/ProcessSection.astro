@@ -1,0 +1,29 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+const process = business.process ?? [
+  { title: 'Reach out', description: 'Call or send the form with a few details.' },
+  { title: 'Get a clear next step', description: 'The business confirms fit, timing, and what happens next.' },
+  { title: 'Move forward', description: 'The client gets scheduled, quoted, or guided to the right service.' }
+];
+---
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Process</p>
+      <h2>Make the next step feel easy</h2>
+    </div>
+    <div class="timeline">
+      {process.map((item, index) => (
+        <article class="timeline-item">
+          <span>0{index + 1}</span>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

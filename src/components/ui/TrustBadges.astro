@@ -1,0 +1,7 @@
+---
+type Props = { badges: string[] };
+const { badges } = Astro.props as Props;
+---
+<div class="trust-row">
+  {badges.map((badge) => <span>{badge}</span>)}
+</div>

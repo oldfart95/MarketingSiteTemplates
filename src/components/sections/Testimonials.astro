@@ -1,0 +1,21 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Testimonials</p>
+      <h2>Social proof that is easy to swap for real reviews</h2>
+    </div>
+    <div class="quote-grid">
+      {business.testimonials.map((item) => (
+        <blockquote>
+          <p>"{item.quote}"</p>
+          <footer>{item.name}</footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>

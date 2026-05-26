@@ -1,0 +1,80 @@
+---
+import '../../styles/global.css';
+import { buildLocalBusinessJsonLd } from '../../lib/site';
+import type { BusinessProfile, SiteTheme, TemplateConfig } from '../../types/site';
+type Props = {
+  business: BusinessProfile;
+  template: TemplateConfig;
+  theme: SiteTheme;
+  pageTitle?: string;
+  pageDescription?: string;
+};
+const { business, template, theme, pageTitle, pageDescription } = Astro.props as Props;
+const navItems = [
+  ['Home', '/site/'],
+  ['Services', '/site/services'],
+  ['About', '/site/about'],
+  ['Work & Reviews', '/site/proof'],
+  ['Contact', '/site/contact']
+];
+const jsonLd = buildLocalBusinessJsonLd(business);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle ?? business.seo.title}</title>
+    <meta name="description" content={pageDescription ?? business.seo.description} />
+    <meta name="keywords" content={business.seo.keywords.join(', ')} />
+    <meta property="og:title" content={business.seo.ogTitle ?? business.seo.title} />
+    <meta property="og:description" content={business.seo.ogDescription ?? business.seo.description} />
+    <meta property="og:type" content="website" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class={`${theme.bodyClass} factory-template factory-${template.id}`} style={`--brand:${theme.primary};--cta:${theme.secondary};--accent:${theme.accent};--surface:${theme.surface};--ink-soft:${theme.textSoft};`}>
+    <header class="site-header factory-header">
+      <div class="top-strip">
+        <div class="container top-strip__inner">
+          <span>{business.city}</span>
+          <span>Serving {business.serviceArea.join(', ')}</span>
+        </div>
+      </div>
+      <div class="container header-main">
+        <a class="brand" href="/site/" aria-label={`${business.businessName} home`}>
+          <span class="brand-mark">{business.businessName.charAt(0)}</span>
+          <span>
+            <strong>{business.businessName}</strong>
+            <small>{business.slogan}</small>
+          </span>
+        </a>
+        <div class="header-actions">
+          <a href="/site/contact" class="button button--ghost">{business.cta.secondaryLabel}</a>
+          <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
+        </div>
+      </div>
+      <nav class="container nav" aria-label="Site navigation">
+        {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid premium-footer-grid">
+        <div>
+          <strong>{business.businessName}</strong>
+          <p>{business.address ?? business.city}</p>
+        </div>
+        <div>
+          <strong>Services</strong>
+          <p>{business.services.map((service) => service.name).join(', ')}</p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p><a href={`tel:${business.phone}`}>{business.phone}</a><br /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

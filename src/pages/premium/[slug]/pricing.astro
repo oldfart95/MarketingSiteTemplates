@@ -1,0 +1,42 @@
+---
+import PremiumLayout from '../../../layouts/PremiumLayout.astro';
+import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const basePath = `/premium/${business.slug}`;
+---
+<PremiumLayout business={business} pageTitle={`Packages | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Packages</p>
+      <h1>Help buyers understand their best starting point</h1>
+      <p class="lead">These are static package cards, not a checkout flow. They create clarity without adding payment, accounts, or backend work.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container pricing-grid">
+      {business.premium.packages.map((item) => (
+        <article class="price-card">
+          <p class="eyebrow">{item.price}</p>
+          <h2>{item.name}</h2>
+          <p>{item.description}</p>
+          <ul>
+            {item.features.map((feature) => <li>{feature}</li>)}
+          </ul>
+          <a href={`${basePath}/contact`} class="button button--solid">Ask about this</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--compact section--surface">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Not sure?</p>
+        <h2>Use the form and let the business guide the recommendation</h2>
+      </div>
+      <p class="body-copy">This section is useful for service providers who want pricing transparency without trapping themselves in fixed quotes.</p>
+    </div>
+  </section>
+</PremiumLayout>

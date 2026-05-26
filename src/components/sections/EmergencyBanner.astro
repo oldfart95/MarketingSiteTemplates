@@ -1,0 +1,14 @@
+---
+import type { BusinessProfile, IndustryConfig } from '../../types/site';
+type Props = { business: BusinessProfile; industry: IndustryConfig };
+const { business, industry } = Astro.props as Props;
+---
+{industry.emergencyEligible && (
+  <section class="emergency-banner">
+    <div class="container emergency-banner__inner">
+      <strong>Need a fast response?</strong>
+      <span>{business.businessName} can prioritize urgent requests when availability allows.</span>
+      <a href={`tel:${business.phone}`}>Call {business.phone}</a>
+    </div>
+  </section>
+)}

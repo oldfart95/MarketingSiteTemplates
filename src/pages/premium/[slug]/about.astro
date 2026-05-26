@@ -1,0 +1,47 @@
+---
+import PremiumLayout from '../../../layouts/PremiumLayout.astro';
+import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<PremiumLayout business={business} pageTitle={`About | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">About</p>
+      <h1>Make the business feel real before the visitor ever calls</h1>
+      <p class="lead">{business.about}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="image-stack">
+        {business.galleryImages.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+      </div>
+      <div>
+        <p class="eyebrow">Team</p>
+        <h2>People, roles, and enough detail to build trust</h2>
+        <div class="team-list">
+          {business.premium.team.map((person) => (
+            <article>
+              <h3>{person.name}</h3>
+              <strong>{person.role}</strong>
+              <p>{person.bio}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container quote-grid">
+      {business.testimonials.map((item) => (
+        <blockquote>
+          <p>"{item.quote}"</p>
+          <footer>{item.name}</footer>
+        </blockquote>
+      ))}
+    </div>
+  </section>
+</PremiumLayout>

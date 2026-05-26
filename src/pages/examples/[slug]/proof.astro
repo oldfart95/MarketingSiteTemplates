@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`Proof | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Proof</p>
+      <h1>Visual credibility and social proof in one simple page</h1>
+      <p class="lead">A lightweight gallery plus testimonials gives the business something concrete to show before a customer calls.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container gallery-grid">
+      {business.galleryImages.map((image) => (
+        <figure>
+          <img src={image.src} alt={image.alt} loading="lazy" />
+          <figcaption>{image.alt}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Testimonials</p>
+        <h2>Real words, easy to replace</h2>
+      </div>
+      <div class="quote-grid">
+        {business.testimonials.map((item) => (
+          <blockquote>
+            <p>"{item.quote}"</p>
+            <footer>{item.name}</footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

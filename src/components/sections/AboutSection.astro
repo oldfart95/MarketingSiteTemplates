@@ -1,0 +1,19 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<section class="section">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">About</p>
+      <h2>A real local business story, not filler copy</h2>
+      <p class="body-copy">{business.about}</p>
+    </div>
+    <div class="stats-panel">
+      <div><strong>{business.services.length}</strong><span>core services</span></div>
+      <div><strong>{business.serviceArea.length}</strong><span>nearby communities</span></div>
+      <div><strong>{business.testimonials.length}</strong><span>proof points included</span></div>
+    </div>
+  </div>
+</section>

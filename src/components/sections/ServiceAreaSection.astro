@@ -1,0 +1,17 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<section class="section section--compact section--surface">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Service area</p>
+      <h2>Built for nearby customers</h2>
+      <p class="body-copy">Local city mentions are kept visible for customers and practical SEO.</p>
+    </div>
+    <div class="area-grid">
+      {business.serviceArea.map((area) => <a href="/site/contact">{area}</a>)}
+    </div>
+  </div>
+</section>

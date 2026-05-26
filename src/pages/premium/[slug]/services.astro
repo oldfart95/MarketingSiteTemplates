@@ -1,0 +1,49 @@
+---
+import PremiumLayout from '../../../layouts/PremiumLayout.astro';
+import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const basePath = `/premium/${business.slug}`;
+---
+<PremiumLayout business={business} pageTitle={`Services | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Services</p>
+      <h1>Offer pages built for clarity, confidence, and action</h1>
+      <p class="lead">A premium service page gives each line of business a clear promise, next step, and reason to trust the provider.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container service-list premium-service-list">
+      {business.services.map((service, index) => (
+        <article class="service-row">
+          <span class="service-index">0{index + 1}</span>
+          <div>
+            <h2>{service.name}</h2>
+            <p>{service.description}</p>
+            <div class="tag-row">
+              <span>Fast fit check</span>
+              <span>Local availability</span>
+              <span>Clear next step</span>
+            </div>
+          </div>
+          <a href={`${basePath}/contact`} class="text-link">Start request</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Service area</p>
+        <h2>Built for nearby customers, not anonymous traffic</h2>
+        <p class="body-copy">The template keeps local cities visible in natural page sections so the business feels close and searchable.</p>
+      </div>
+      <div class="area-grid">
+        {business.serviceArea.map((area) => <a href={`${basePath}/contact`}>{area}</a>)}
+      </div>
+    </div>
+  </section>
+</PremiumLayout>

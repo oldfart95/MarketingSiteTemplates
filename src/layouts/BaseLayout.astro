@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+const { business, pageTitle, pageDescription } = Astro.props;
+const basePath = `/examples/${business.slug}`;
+const navItems = [
+  ['Home', `${basePath}/`],
+  ['Services', `${basePath}/services`],
+  ['About', `${basePath}/about`],
+  ['Proof', `${basePath}/proof`],
+  ['Contact', `${basePath}/contact`]
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle ?? business.seo.title}</title>
+    <meta name="description" content={pageDescription ?? business.seo.description} />
+  </head>
+  <body class={`theme-${business.templateType}`} style={`--brand:${business.theme.primary};--cta:${business.theme.secondary};--accent:${business.theme.accent};--surface:${business.theme.surface};`}>
+    <header class="site-header">
+      <div class="top-strip">
+        <div class="container top-strip__inner">
+          <span>{business.city}</span>
+          <span>Serving {business.serviceArea.join(', ')}</span>
+        </div>
+      </div>
+      <div class="container header-main">
+        <a class="brand" href={`${basePath}/`} aria-label={`${business.businessName} home`}>
+          <span class="brand-mark">{business.businessName.charAt(0)}</span>
+          <span>
+            <strong>{business.businessName}</strong>
+            <small>{business.tagline}</small>
+          </span>
+        </a>
+        <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
+      </div>
+      <nav class="container nav" aria-label="Primary navigation">
+        {navItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>{business.businessName}</strong>
+          <p>{business.address}</p>
+        </div>
+        <div>
+          <strong>Service Area</strong>
+          <p>{business.serviceArea.join(', ')}</p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p><a href={`tel:${business.phone}`}>{business.phone}</a><br /><a href={`mailto:${business.email}`}>{business.email}</a></p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

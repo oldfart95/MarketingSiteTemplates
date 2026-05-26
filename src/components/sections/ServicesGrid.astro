@@ -1,0 +1,23 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<section class="section section--surface">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Services</p>
+      <h2>Clear services for high-intent local customers</h2>
+      <p>Each service can be replaced, expanded, or turned into its own landing page later.</p>
+    </div>
+    <div class="card-grid premium-feature-grid">
+      {business.services.map((service, index) => (
+        <article class="feature-card">
+          <span class="card-number">0{index + 1}</span>
+          <h3>{service.name}</h3>
+          <p>{service.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

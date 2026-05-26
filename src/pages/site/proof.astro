@@ -1,0 +1,22 @@
+---
+import SiteShell from '../../components/layout/SiteShell.astro';
+import GalleryPreview from '../../components/sections/GalleryPreview.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import FAQSection from '../../components/sections/FAQSection.astro';
+import ContactCTA from '../../components/sections/ContactCTA.astro';
+import { getActiveSite } from '../../lib/site';
+const { business, template, theme, industry } = getActiveSite();
+---
+<SiteShell business={business} template={template} theme={theme} pageTitle={`Work & Reviews | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Proof</p>
+      <h1>Gallery, reviews, and confidence builders in one place</h1>
+      <p class="lead">Use real photos when available, or let the factory show tasteful placeholders until a client provides images.</p>
+    </div>
+  </section>
+  <GalleryPreview business={business} />
+  <Testimonials business={business} />
+  <FAQSection business={business} industry={industry} />
+  <ContactCTA business={business} />
+</SiteShell>

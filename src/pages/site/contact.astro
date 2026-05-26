@@ -1,0 +1,38 @@
+---
+import SiteShell from '../../components/layout/SiteShell.astro';
+import ContactForm from '../../components/sections/ContactForm.astro';
+import { getActiveSite } from '../../lib/site';
+const { business, template, theme } = getActiveSite();
+---
+<SiteShell business={business} template={template} theme={theme} pageTitle={`Contact | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Contact</p>
+      <h1>Make calls and quote requests simple</h1>
+      <p class="lead">This static form works as a mailto fallback and includes Netlify Forms-friendly attributes for easy hosting upgrades.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid premium-contact-grid">
+      <ContactForm business={business} />
+      <aside class="detail-panel contact-sidebar">
+        <div>
+          <span>Call</span>
+          <strong><a href={`tel:${business.phone}`}>{business.phone}</a></strong>
+        </div>
+        <div>
+          <span>Email</span>
+          <strong><a href={`mailto:${business.email}`}>{business.email}</a></strong>
+        </div>
+        <div>
+          <span>Serving</span>
+          <strong>{business.serviceArea.join(', ')}</strong>
+        </div>
+        <div>
+          <span>Address</span>
+          <strong>{business.address ?? business.city}</strong>
+        </div>
+      </aside>
+    </div>
+  </section>
+</SiteShell>

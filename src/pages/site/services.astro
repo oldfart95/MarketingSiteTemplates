@@ -1,0 +1,22 @@
+---
+import SiteShell from '../../components/layout/SiteShell.astro';
+import ServicesGrid from '../../components/sections/ServicesGrid.astro';
+import ServiceAreaSection from '../../components/sections/ServiceAreaSection.astro';
+import FAQSection from '../../components/sections/FAQSection.astro';
+import ContactCTA from '../../components/sections/ContactCTA.astro';
+import { getActiveSite } from '../../lib/site';
+const { business, template, theme, industry } = getActiveSite();
+---
+<SiteShell business={business} template={template} theme={theme} pageTitle={`Services | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">{industry.name}</p>
+      <h1>Services built around what local customers search for first</h1>
+      <p class="lead">The active industry provides sensible defaults, while the business profile controls the final offer.</p>
+    </div>
+  </section>
+  <ServicesGrid business={business} />
+  <ServiceAreaSection business={business} />
+  <FAQSection business={business} industry={industry} />
+  <ContactCTA business={business} />
+</SiteShell>

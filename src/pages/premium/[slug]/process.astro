@@ -1,0 +1,46 @@
+---
+import PremiumLayout from '../../../layouts/PremiumLayout.astro';
+import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<PremiumLayout business={business} pageTitle={`Process | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Process</p>
+      <h1>Show prospects what happens after they reach out</h1>
+      <p class="lead">Uncertainty quietly kills inquiries. This page turns the client journey into something calm, visible, and easy to say yes to.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container timeline">
+      {business.premium.process.map((item) => (
+        <article class="timeline-item">
+          <span>{item.step}</span>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Common questions</p>
+        <h2>FAQ blocks that reduce hesitation</h2>
+      </div>
+      <div class="faq-list">
+        {business.premium.faqs.map((item) => (
+          <details>
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</PremiumLayout>

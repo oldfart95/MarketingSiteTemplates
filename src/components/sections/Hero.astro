@@ -1,0 +1,36 @@
+---
+import type { BusinessProfile, IndustryConfig } from '../../types/site';
+type Props = { business: BusinessProfile; industry: IndustryConfig };
+const { business, industry } = Astro.props as Props;
+---
+<section class="hero factory-hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{industry.name} · {business.city}</p>
+      <h1>{business.slogan}</h1>
+      <p class="lead">{business.shortDescription}</p>
+      <div class="action-row">
+        <a href="/site/contact" class="button button--solid">{business.cta.primaryLabel}</a>
+        <a href="/site/services" class="button button--ghost">{business.cta.secondaryLabel}</a>
+      </div>
+      <div class="trust-row">
+        {(business.trustBadges ?? industry.trustBadges).slice(0, 4).map((badge) => <span>{badge}</span>)}
+      </div>
+    </div>
+    <div class="hero-media premium-dashboard">
+      {business.galleryImages[0]?.src ? (
+        <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} loading="eager" />
+      ) : (
+        <div class="placeholder-image placeholder-image--hero">Recent project</div>
+      )}
+      <div class="mini-panel">
+        <strong>{business.serviceArea.length} local areas served</strong>
+        <span>{business.serviceArea.join(', ')}</span>
+      </div>
+      <div class="hero-note">
+        <strong>{business.cta.primaryLabel}</strong>
+        <span>{business.phone}</span>
+      </div>
+    </div>
+  </div>
+</section>

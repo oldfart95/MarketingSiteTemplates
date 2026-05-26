@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`About | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">About & trust</p>
+      <h1>A local presence that feels established from the first click</h1>
+      <p class="lead">{business.about}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container split">
+      <div class="image-stack">
+        {business.galleryImages.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
+      </div>
+      <div>
+        <p class="eyebrow">Why clients choose us</p>
+        <h2>Calm, credible, and ready for real inquiries</h2>
+        <div class="check-list">
+          <p><span></span>Prompt communication and transparent pricing.</p>
+          <p><span></span>Qualified team with clear next steps.</p>
+          <p><span></span>Respectful, community-first service approach.</p>
+          <p><span></span>Pages structured for local search and fast mobile scans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section--compact section--surface">
+    <div class="container stat-strip">
+      <div><strong>{business.serviceArea.length}</strong><span>nearby communities served</span></div>
+      <div><strong>2</strong><span>sample testimonials included</span></div>
+      <div><strong>5</strong><span>client-ready pages</span></div>
+    </div>
+  </section>
+</BaseLayout>

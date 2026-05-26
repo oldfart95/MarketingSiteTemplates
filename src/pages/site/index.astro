@@ -1,0 +1,25 @@
+---
+import SiteShell from '../../components/layout/SiteShell.astro';
+import EmergencyBanner from '../../components/sections/EmergencyBanner.astro';
+import Hero from '../../components/sections/Hero.astro';
+import ServicesGrid from '../../components/sections/ServicesGrid.astro';
+import AboutSection from '../../components/sections/AboutSection.astro';
+import GalleryPreview from '../../components/sections/GalleryPreview.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import ProcessSection from '../../components/sections/ProcessSection.astro';
+import ServiceAreaSection from '../../components/sections/ServiceAreaSection.astro';
+import ContactCTA from '../../components/sections/ContactCTA.astro';
+import { getActiveSite } from '../../lib/site';
+const { business, template, theme, industry } = getActiveSite();
+---
+<SiteShell business={business} template={template} theme={theme}>
+  <EmergencyBanner business={business} industry={industry} />
+  <Hero business={business} industry={industry} />
+  <ServicesGrid business={business} />
+  <AboutSection business={business} />
+  <GalleryPreview business={business} />
+  <Testimonials business={business} />
+  <ProcessSection business={business} />
+  <ServiceAreaSection business={business} />
+  <ContactCTA business={business} />
+</SiteShell>

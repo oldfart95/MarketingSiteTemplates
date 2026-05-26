@@ -1,0 +1,18 @@
+---
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+---
+<section class="section section--compact section--surface">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">Ready when they are</p>
+      <h2>{business.cta.primaryLabel}</h2>
+      <p class="body-copy">Calls, quote requests, or both can be emphasized from the same profile data.</p>
+    </div>
+    <div class="contact-card">
+      <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
+      <a href="/site/contact" class="button button--ghost">Use the contact form</a>
+    </div>
+  </div>
+</section>

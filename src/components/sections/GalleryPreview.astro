@@ -1,0 +1,23 @@
+---
+import { getGalleryImages } from '../../lib/site';
+import type { BusinessProfile } from '../../types/site';
+type Props = { business: BusinessProfile };
+const { business } = Astro.props as Props;
+const images = getGalleryImages(business);
+---
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Work examples</p>
+      <h2>Project visuals without depending on a photo library</h2>
+    </div>
+    <div class="gallery-grid">
+      {images.map((image) => (
+        <figure>
+          {image.src ? <img src={image.src} alt={image.alt} loading="lazy" /> : <div class="placeholder-image">{image.label ?? image.alt}</div>}
+          <figcaption>{image.label ?? image.alt}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

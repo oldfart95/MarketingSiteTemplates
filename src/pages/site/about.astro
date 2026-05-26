@@ -1,0 +1,22 @@
+---
+import SiteShell from '../../components/layout/SiteShell.astro';
+import AboutSection from '../../components/sections/AboutSection.astro';
+import ProcessSection from '../../components/sections/ProcessSection.astro';
+import Testimonials from '../../components/sections/Testimonials.astro';
+import ContactCTA from '../../components/sections/ContactCTA.astro';
+import { getActiveSite } from '../../lib/site';
+const { business, template, theme } = getActiveSite();
+---
+<SiteShell business={business} template={template} theme={theme} pageTitle={`About | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">About {business.businessName}</p>
+      <h1>A local story, trust signals, and a clear client journey</h1>
+      <p class="lead">{business.shortDescription}</p>
+    </div>
+  </section>
+  <AboutSection business={business} />
+  <ProcessSection business={business} />
+  <Testimonials business={business} />
+  <ContactCTA business={business} />
+</SiteShell>

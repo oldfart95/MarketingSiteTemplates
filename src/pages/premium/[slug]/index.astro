@@ -1,0 +1,80 @@
+---
+import PremiumLayout from '../../../layouts/PremiumLayout.astro';
+import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const basePath = `/premium/${business.slug}`;
+---
+<PremiumLayout business={business} pageTitle={`Premium Website Template | ${business.businessName}`}>
+  <section class="hero premium-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Premium local business website</p>
+        <h1>{business.tagline}</h1>
+        <p class="lead">{business.premium.promise}</p>
+        <div class="action-row">
+          <a href={`${basePath}/contact`} class="button button--solid">{business.primaryCTA}</a>
+          <a href={`${basePath}/pricing`} class="button button--ghost">Compare Options</a>
+        </div>
+        <div class="trust-row">
+          {business.premium.highlights.map((highlight) => <span>{highlight}</span>)}
+        </div>
+      </div>
+      <div class="hero-media premium-dashboard">
+        <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} loading="eager" />
+        <div class="mini-panel mini-panel--top">
+          <strong>{business.services.length} service paths</strong>
+          <span>Structured for calls, quote requests, and consults.</span>
+        </div>
+        <div class="hero-note">
+          <strong>{business.primaryCTA}</strong>
+          <span>{business.phone} · {business.city}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Site features</p>
+        <h2>A bigger template for a business that is ready to sell better</h2>
+        <p>Use the pages as-is for a premium package, or remove sections for leaner client builds.</p>
+      </div>
+      <div class="card-grid premium-feature-grid">
+        <article class="feature-card"><h3>Conversion-first home page</h3><p>Hero CTA, proof, packages, local coverage, and service paths in one clear flow.</p></article>
+        <article class="feature-card"><h3>Package comparison</h3><p>Static pricing cards help prospects self-select without needing a payment system.</p></article>
+        <article class="feature-card"><h3>Resource hub</h3><p>Guide and checklist cards give businesses a reason to follow up and build trust.</p></article>
+        <article class="feature-card"><h3>Process page</h3><p>Turns uncertainty into confidence with a simple step-by-step client journey.</p></article>
+        <article class="feature-card"><h3>Service-area content</h3><p>Local cities are surfaced naturally for calls and future SEO expansion.</p></article>
+        <article class="feature-card"><h3>Intake-style contact</h3><p>A static form pattern captures the right questions while staying deploy-anywhere simple.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Core services</p>
+        <h2>Clear pathways for the highest-intent visitors</h2>
+        <p class="body-copy">Each service gets concise positioning, a CTA, and room to grow into a dedicated landing page later.</p>
+      </div>
+      <div class="stack-list">
+        {business.services.map((service) => (
+          <a class="stack-item" href={`${basePath}/services`}>
+            <strong>{service.name}</strong>
+            <span>{service.description}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact section--surface">
+    <div class="container stat-strip">
+      <div><strong>7</strong><span>premium pages</span></div>
+      <div><strong>{business.serviceArea.length}</strong><span>local markets highlighted</span></div>
+      <div><strong>{business.premium.resources.length}</strong><span>resource cards included</span></div>
+    </div>
+  </section>
+</PremiumLayout>

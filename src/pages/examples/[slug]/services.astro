@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`Services | ${business.businessName}`}>
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Services</p>
+      <h1>Clear offers for customers who are ready to act</h1>
+      <p class="lead">Each service is written to be easy to replace, easy to scan, and useful for local search.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container service-list">
+      {business.services.map((service, index) => (
+        <article class="service-row">
+          <span class="service-index">0{index + 1}</span>
+          <div>
+            <h2>{service.name}</h2>
+            <p>{service.description}</p>
+          </div>
+          <a href={`/examples/${business.slug}/contact`} class="text-link">Request details</a>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section section--compact section--surface">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Service area</p>
+        <h2>Local coverage without the clutter</h2>
+      </div>
+      <p class="body-copy">Serving {business.serviceArea.join(', ')} from {business.address}. This section gives every client a simple place to reinforce nearby cities and neighborhoods.</p>
+    </div>
+  </section>
+</BaseLayout>
