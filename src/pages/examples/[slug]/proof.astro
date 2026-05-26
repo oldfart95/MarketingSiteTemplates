@@ -8,8 +8,8 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Proof</p>
-      <h1>Visual credibility and social proof in one simple page</h1>
-      <p class="lead">A lightweight gallery plus testimonials gives the business something concrete to show before a customer calls.</p>
+      <h1>Photos, reviews, and answers that reduce hesitation</h1>
+      <p class="lead">Prospects can see the kind of work, care, or advisory experience they are asking for before they reach out.</p>
     </div>
   </section>
   <section class="section">
@@ -25,8 +25,8 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
   <section class="section section--surface">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">Testimonials</p>
-        <h2>Real words, easy to replace</h2>
+        <p class="eyebrow">Customer words</p>
+        <h2>What people notice after working with {business.businessName}</h2>
       </div>
       <div class="quote-grid">
         {business.testimonials.map((item) => (
@@ -36,6 +36,16 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
           </blockquote>
         ))}
       </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container faq-grid">
+      {business.faqs.map((item) => (
+        <article class="faq-card">
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </article>
+      ))}
     </div>
   </section>
 </BaseLayout>

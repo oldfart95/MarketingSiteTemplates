@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
+import { sitePath } from '../lib/paths';
 const { business, pageTitle, pageDescription } = Astro.props;
-const basePath = `/premium/${business.slug}`;
+const basePath = sitePath(`premium/${business.slug}`);
 const navItems = [
   ['Home', `${basePath}/`],
   ['Services', `${basePath}/services`],

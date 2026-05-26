@@ -8,8 +8,8 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Contact</p>
-      <h1>Make the next step obvious</h1>
-      <p class="lead">Fast response for local clients in {business.serviceArea.join(', ')}.</p>
+      <h1>Start with the next practical step</h1>
+      <p class="lead">{business.primaryCTA} for clients in {business.serviceArea.join(', ')}.</p>
     </div>
   </section>
   <section class="section">
@@ -17,6 +17,7 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
       <div class="contact-card">
         <p class="eyebrow">Start here</p>
         <h2>{business.primaryCTA}</h2>
+        <p>{business.problemSolved}</p>
         <a href={`tel:${business.phone}`} class="button button--solid">{business.phone}</a>
         <a href={`mailto:${business.email}`} class="button button--ghost">{business.email}</a>
       </div>
@@ -31,7 +32,7 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
         </div>
         <div>
           <span>Best fit</span>
-          <strong>{business.services.map((service) => service.name).join(' / ')}</strong>
+          <strong>{business.idealClient}</strong>
         </div>
       </div>
     </div>

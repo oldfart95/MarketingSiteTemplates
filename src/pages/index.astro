@@ -2,47 +2,92 @@
 import MarketingLayout from '../layouts/MarketingLayout.astro';
 import { sitePath } from '../lib/paths';
 ---
-<MarketingLayout title="Websites for Local Businesses | Website Factory" description="Productized static websites for local businesses that need calls, trust, and speed.">
-  <section class="hero-section">
+<MarketingLayout title="Professional Websites for Local Businesses | Website Factory" description="Professional local business website launches starting at $3,500.">
+  <section class="hero-section offer-hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Websites for local businesses that need calls, trust, and speed</p>
-        <h1>A practical website offer for owners who need a stronger online presence fast.</h1>
-        <p>We turn your intake into a polished static site with clear service messaging, trust proof, and a direct call-to-action flow. No CMS overhead, no plugin maintenance.</p>
+        <p class="eyebrow">Professional Website Launch - starting at $3,500</p>
+        <h1>A credibility website built to turn local trust into calls.</h1>
+        <p>We plan, write, design, and launch a polished static website for service businesses that need to look established, explain the offer clearly, and make the next step obvious.</p>
         <div class="cta-row">
           <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
-          <a class="button-secondary" href={sitePath('offer-site/examples')}>See examples</a>
+          <a class="button-secondary" href={sitePath('demo-library/')}>See Premium Examples</a>
         </div>
       </div>
-      <div class="panel">
-        <h2>What this solves</h2>
+      <div class="panel premium-price-card">
+        <span>Anchor package</span>
+        <strong>Professional Website Launch</strong>
+        <p>Starting at $3,500</p>
         <ul>
-          <li>Outdated sites that don’t build trust</li>
-          <li>Slow pages that lose mobile visitors</li>
-          <li>Vague offers that fail to convert calls</li>
+          <li>4-5 core pages</li>
+          <li>Copy structure and conversion flow</li>
+          <li>Deployment and one revision round</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section class="content-section">
+    <div class="container section-heading">
+      <p class="eyebrow">What is included</p>
+      <h2>A complete launch package, not a pretty shell.</h2>
+      <p>The work is scoped around the pieces a local business needs before a prospect trusts the call button.</p>
+    </div>
     <div class="container card-grid">
-      <article class="card"><h3>Starter Website</h3><p>Core 5-page site for credible launch and local lead capture.</p></article>
-      <article class="card"><h3>Professional Website</h3><p>Expanded content, stronger proof sections, and more conversion detail.</p></article>
-      <article class="card"><h3>Monthly Care</h3><p>Ongoing updates, content edits, and support after launch.</p></article>
+      {['4-5 core pages', 'Copywriting structure', 'Mobile-first design', 'Local SEO basics', 'Contact flow', 'Gallery and testimonial setup', 'Static deployment', 'One revision round'].map((item) => (
+        <article class="card premium-card"><h3>{item}</h3><p>Planned so the site feels clear, credible, and ready for real prospects.</p></article>
+      ))}
     </div>
   </section>
 
   <section class="content-section muted-bg">
+    <div class="container comparison-grid">
+      <article class="comparison-card comparison-card--weak">
+        <p class="eyebrow">Weak online presence</p>
+        <h2>Prospects hesitate.</h2>
+        <ul>
+          <li>Thin service descriptions</li>
+          <li>No proof or local context</li>
+          <li>Generic contact page</li>
+          <li>Mobile layout feels unfinished</li>
+        </ul>
+      </article>
+      <article class="comparison-card">
+        <p class="eyebrow">Credibility website</p>
+        <h2>Prospects know why to call.</h2>
+        <ul>
+          <li>Clear offer and service fit</li>
+          <li>Trust points, reviews, and FAQs</li>
+          <li>Direct calls to action</li>
+          <li>Fast static pages with clean structure</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
     <div class="container two-col">
       <div>
-        <h2>Why static websites?</h2>
-        <p>Static sites are fast, secure, and low-maintenance. They eliminate common plugin vulnerabilities and reduce moving parts, which makes them reliable for busy owners.</p>
+        <p class="eyebrow">Why it is worth it</p>
+        <h2>Your website has to do sales work before anyone contacts you.</h2>
+        <p>A stronger site reduces doubt, explains the value of your service, shows proof, and gives qualified prospects a low-friction next step. That is the difference between a brochure and a credibility asset.</p>
       </div>
+      <div class="timeline-list">
+        {['Intake', 'Draft', 'Review', 'Launch', 'Care'].map((step, index) => (
+          <article><span>0{index + 1}</span><strong>{step}</strong><p>A focused step that keeps the project moving without turning into a months-long redesign.</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section care-band">
+    <div class="container split">
       <div>
-        <h2>Built for local SEO basics</h2>
-        <p>Every site includes clear location/service structure, semantic headings, metadata, and conversion-focused page hierarchy so prospects and search engines understand your offer.</p>
+        <p class="eyebrow">Ongoing support</p>
+        <h2>Monthly care for edits, upkeep, and steady improvement.</h2>
+        <p>After launch, care plans can cover content edits, new photos, seasonal updates, landing-page improvements, and priority support.</p>
       </div>
+      <a class="button-primary" href={sitePath('offer-site/contact')}>Book a Website Launch Review</a>
     </div>
   </section>
 </MarketingLayout>

@@ -1,16 +1,31 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import { businesses } from '../../data/templates';
 import { sitePath } from '../../lib/paths';
 ---
-<MarketingLayout title="Examples | Website Factory" description="Browse generated templates and demos.">
+<MarketingLayout title="Examples | Website Factory" description="Premium local business website examples and case studies.">
   <section class="content-section"><div class="container prose">
-    <h1>Examples</h1>
-    <p>Review existing generated examples and template types to see style direction and content structure.</p>
-    <ul>
-      <li><a href={sitePath('demo-library/')}>Open demo library index</a></li>
-      <li><a href={sitePath('examples/summit-home-services/')}>Service business example</a></li>
-      <li><a href={sitePath('examples/peaceful-harbor-care/')}>Care/trust example</a></li>
-      <li><a href={sitePath('examples/harbor-point-advisors/')}>Professional services example</a></li>
-    </ul>
+    <p class="eyebrow">Examples</p>
+    <h1>Premium examples for local businesses that need credibility fast.</h1>
+    <p>Each example shows how the same launch package can support a different niche, customer concern, and conversion path.</p>
   </div></section>
+  <section class="content-section muted-bg">
+    <div class="container case-grid">
+      {businesses.map((business) => (
+        <article class="case-card">
+          <p class="eyebrow">{business.niche}</p>
+          <h2>{business.businessName}</h2>
+          <p>{business.problemSolved}</p>
+          <dl>
+            <div><dt>Ideal client</dt><dd>{business.idealClient}</dd></div>
+            <div><dt>Key pages</dt><dd>{business.keyPages.join(', ')}</dd></div>
+          </dl>
+          <div class="cta-row">
+            <a class="button-primary" href={sitePath(`examples/${business.slug}/`)}>View example</a>
+            <a class="button-secondary" href={sitePath(`premium/${business.slug}/`)}>View expanded site</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 </MarketingLayout>

@@ -1,15 +1,17 @@
 ---
 import PremiumLayout from '../../../layouts/PremiumLayout.astro';
 import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+import { sitePath } from '../../../lib/paths';
 export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
-const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect(sitePath());
+const basePath = sitePath(`premium/${business.slug}`);
 ---
 <PremiumLayout business={business} pageTitle={`Resources | ${business.businessName}`}>
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Resources</p>
-      <h1>Give visitors something useful before they call</h1>
-      <p class="lead">A resource hub makes the business feel helpful, established, and easier to trust, even when the articles are short.</p>
+      <h1>Helpful guidance before the first conversation.</h1>
+      <p class="lead">These resources answer common questions and help visitors arrive with better context.</p>
     </div>
   </section>
 
@@ -20,7 +22,7 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
           <span>{item.category}</span>
           <h2>{item.title}</h2>
           <p>{item.description}</p>
-          <a class="text-link" href={`/premium/${business.slug}/contact`}>Request this resource</a>
+          <a class="text-link" href={`${basePath}/contact`}>Request this resource</a>
         </article>
       ))}
     </div>
@@ -29,10 +31,10 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
   <section class="section section--compact section--surface">
     <div class="container split">
       <div>
-        <p class="eyebrow">Lead magnet slot</p>
-        <h2>Swap in checklists, guides, seasonal notices, or client FAQs</h2>
+        <p class="eyebrow">Need help choosing?</p>
+        <h2>Ask for the resource that fits your situation.</h2>
       </div>
-      <p class="body-copy">This template stays static, but resource cards can link to PDFs, Google Docs, appointment pages, or simple mailto requests.</p>
+      <p class="body-copy">A quick message helps the team point you toward the guide, checklist, or next conversation that makes the most sense.</p>
     </div>
   </section>
 </PremiumLayout>

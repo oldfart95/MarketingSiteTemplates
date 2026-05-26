@@ -1,14 +1,23 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 ---
-<MarketingLayout title="Process | Website Factory" description="How intake, build, review, and launch work.">
+<MarketingLayout title="Process | Website Factory" description="The professional website launch process from intake to care.">
   <section class="content-section"><div class="container prose">
-    <h1>Process</h1>
-    <ol>
-      <li><strong>Intake:</strong> You provide business details, services, photos, and goals.</li>
-      <li><strong>Build:</strong> We produce copy and design using the best-fit template style.</li>
-      <li><strong>Review:</strong> You approve and request focused revisions.</li>
-      <li><strong>Launch:</strong> We deploy to Cloudflare Pages, Netlify, or GitHub Pages.</li>
-    </ol>
+    <p class="eyebrow">Process</p>
+    <h1>From intake to launch without dragging the project out.</h1>
+    <p>The process is intentionally simple: gather the right inputs, produce a strong first draft, revise once with focus, launch, then improve through care if needed.</p>
   </div></section>
+  <section class="content-section muted-bg">
+    <div class="container timeline-list timeline-list--wide">
+      {[
+        ['Intake', 'Business details, services, audience, proof points, photos, and desired calls to action.'],
+        ['Draft', 'A complete first version with page flow, copy structure, visual direction, and responsive layout.'],
+        ['Review', 'One focused revision round to tighten wording, images, priorities, and conversion details.'],
+        ['Launch', 'Static deployment, final checks, and handoff details for the live site.'],
+        ['Care', 'Optional monthly support for edits, new content, and ongoing improvement.']
+      ].map(([title, description], index) => (
+        <article><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></article>
+      ))}
+    </div>
+  </section>
 </MarketingLayout>

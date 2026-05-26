@@ -1,31 +1,30 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { businesses, getBusiness } from '../../../data/templates';
+import { sitePath } from '../../../lib/paths';
 export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
-const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
-const basePath = `/examples/${business.slug}`;
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect(sitePath());
+const basePath = sitePath(`examples/${business.slug}`);
 ---
 <BaseLayout business={business}>
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">{business.city} local service</p>
+        <p class="eyebrow">{business.niche} in {business.city}</p>
         <h1>{business.tagline}</h1>
-        <p class="lead">A polished, trust-first local business site built for quick calls, clear service fit, and confident next steps across {business.serviceArea.join(', ')}.</p>
+        <p class="lead">{business.problemSolved}</p>
         <div class="action-row">
           <a href={`${basePath}/contact`} class="button button--solid">{business.primaryCTA}</a>
           <a href={`${basePath}/proof`} class="button button--ghost">{business.secondaryCTA}</a>
         </div>
         <div class="trust-row" aria-label="Business highlights">
-          <span>Locally owned</span>
-          <span>Clear pricing</span>
-          <span>Fast response</span>
+          {business.trustPoints.slice(0, 4).map((point) => <span>{point}</span>)}
         </div>
       </div>
       <div class="hero-media">
         <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} loading="eager" />
         <div class="hero-note">
-          <strong>Trusted in {business.city.split(',')[0]}</strong>
+          <strong>Serving {business.serviceArea.join(', ')}</strong>
           <span>{business.testimonials[0].quote}</span>
         </div>
       </div>
@@ -35,13 +34,13 @@ const basePath = `/examples/${business.slug}`;
   <section class="section section--surface">
     <div class="container">
       <div class="section-heading">
-        <p class="eyebrow">What we do</p>
-        <h2>Popular services</h2>
-        <p>Short, scannable service cards that make the offer obvious on mobile and desktop.</p>
+        <p class="eyebrow">Services</p>
+        <h2>Clear help for the calls customers are ready to make</h2>
+        <p>{business.idealClient}</p>
       </div>
       <div class="card-grid">
         {business.services.map((service, index) => (
-          <article class="feature-card">
+          <article class="feature-card premium-card">
             <span class="card-number">0{index + 1}</span>
             <h3>{service.name}</h3>
             <p>{service.description}</p>
@@ -54,15 +53,26 @@ const basePath = `/examples/${business.slug}`;
   <section class="section">
     <div class="container split">
       <div>
-        <p class="eyebrow">Why it works</p>
-        <h2>Built around trust before flash</h2>
+        <p class="eyebrow">Why clients call</p>
+        <h2>Trust signals before the first conversation</h2>
         <p class="body-copy">{business.about}</p>
       </div>
-      <div class="stats-panel">
-        <div><strong>5</strong><span>core pages included</span></div>
-        <div><strong>3</strong><span>ready-made local niches</span></div>
-        <div><strong>100%</strong><span>static deployable output</span></div>
+      <div class="trust-card-grid">
+        {business.objections.map((item) => (
+          <article class="trust-card">
+            <strong>{item.concern}</strong>
+            <p>{item.response}</p>
+          </article>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <section class="section section--compact section--surface">
+    <div class="container stat-strip">
+      {business.trustPoints.slice(0, 3).map((point) => (
+        <div><strong>{point}</strong><span>{business.city} area clients know what to expect.</span></div>
+      ))}
     </div>
   </section>
 </BaseLayout>

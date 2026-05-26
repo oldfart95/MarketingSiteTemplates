@@ -1,12 +1,38 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import { sitePath } from '../../lib/paths';
 ---
-<MarketingLayout title="Pricing | Website Factory" description="Pricing tiers for Starter, Professional, and Monthly Care.">
+<MarketingLayout title="Pricing | Website Factory" description="Professional local business website packages starting at $3,500.">
   <section class="content-section"><div class="container prose">
-    <h1>Pricing Tiers</h1>
-    <h2>Starter Website</h2><p>Ideal for a clean relaunch with core pages and conversion-ready structure.</p>
-    <h2>Professional Website</h2><p>Adds expanded copy depth, proof presentation, and stronger service differentiation.</p>
-    <h2>Monthly Care</h2><p>Optional retained support for edits and ongoing improvements.</p>
-    <p><strong>Final pricing is scoped after intake based on page count, readiness of assets, and revision scope.</strong></p>
+    <p class="eyebrow">Pricing</p>
+    <h1>Professional Website Launch - starting at $3,500</h1>
+    <p>A clear anchor package for businesses that need more than a starter page and less than a bloated agency engagement.</p>
   </div></section>
+
+  <section class="content-section muted-bg">
+    <div class="container pricing-grid">
+      <article class="price-card">
+        <span>Core package</span>
+        <h2>Professional Website Launch</h2>
+        <strong>Starting at $3,500</strong>
+        <p>4-5 page credibility website with content structure, mobile design, local SEO basics, contact flow, deployment, and one revision round.</p>
+        <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
+      </article>
+      <article class="price-card">
+        <span>After launch</span>
+        <h2>Monthly Care</h2>
+        <strong>Custom monthly support</strong>
+        <p>Content edits, new photos, seasonal updates, landing-page improvements, and priority support after the site is live.</p>
+        <a class="button-secondary" href={sitePath('offer-site/contact')}>Ask About Care</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container card-grid">
+      {['Copy and structure', 'Design polish', 'Local trust proof', 'Launch support'].map((item) => (
+        <article class="card premium-card"><h3>{item}</h3><p>Included so the finished site feels substantial, useful, and ready for real prospects.</p></article>
+      ))}
+    </div>
+  </section>
 </MarketingLayout>

@@ -1,12 +1,44 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import { sitePath } from '../../lib/paths';
 ---
-<MarketingLayout title="Services | Website Factory" description="What you get in each local-business website package.">
+<MarketingLayout title="Services | Website Factory" description="Professional website launch deliverables for local businesses.">
   <section class="content-section"><div class="container prose">
-    <h1>What You Get</h1>
-    <p>Each website is built from a proven template system and tailored to your business profile, service area, and goals.</p>
-    <h2>Starter Website</h2><ul><li>Home, Services, About/Trust, Proof, Contact pages</li><li>Custom copy from intake inputs</li><li>Mobile-first layout and performance-focused delivery</li></ul>
-    <h2>Professional Upgrade</h2><ul><li>Expanded service detail and proof modules</li><li>Deeper conversion flow and CTA mapping</li><li>Additional design polish and content structure</li></ul>
-    <h2>Monthly Care</h2><p>Post-launch edits, upkeep, and priority requests for teams that need ongoing support.</p>
+    <p class="eyebrow">Services</p>
+    <h1>Professional Website Launch</h1>
+    <p>A focused website package for local businesses that need a credible digital presence, stronger calls to action, and a launch path that does not require a complicated platform.</p>
   </div></section>
+
+  <section class="content-section muted-bg">
+    <div class="container card-grid">
+      {['Home page strategy', 'Services page structure', 'About and trust messaging', 'Gallery or proof setup', 'Contact flow', 'Local SEO basics'].map((item) => (
+        <article class="card premium-card"><h2>{item}</h2><p>Built around customer questions, local credibility, and a clear next step.</p></article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Package anchor</p>
+        <h2>Starting at $3,500</h2>
+        <p>Best for owners who need a polished 4-5 page website with copy direction, responsive design, deployment, and one revision round included.</p>
+      </div>
+      <div class="panel">
+        <h2>Good fit when</h2>
+        <ul>
+          <li>Your current site feels dated or thin</li>
+          <li>Your services are hard to compare</li>
+          <li>You need trust proof, FAQs, and better calls to action</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section care-band">
+    <div class="container split">
+      <h2>Ready for a launch plan?</h2>
+      <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
+    </div>
+  </section>
 </MarketingLayout>

@@ -1,5 +1,32 @@
 ---
+import MarketingLayout from '../layouts/MarketingLayout.astro';
 import { businesses } from '../data/templates';
 import { sitePath } from '../lib/paths';
 ---
-<html><body style="font-family:Arial;padding:2rem"><h1>Template Examples</h1><ul>{businesses.map((b)=> <li><a href={sitePath(`examples/${b.slug}/`)}>{b.businessName} ({b.templateType})</a></li>)}</ul><p><a href={sitePath()}>Back to service site</a></p></body></html>
+<MarketingLayout title="Demo Library | Website Factory" description="Case-study-style local business website examples.">
+  <section class="content-section"><div class="container prose">
+    <p class="eyebrow">Demo library</p>
+    <h1>Three polished local business examples.</h1>
+    <p>Browse the service business, care organization, and professional advisory examples as case studies for how a credibility website can feel in different markets.</p>
+  </div></section>
+  <section class="content-section muted-bg">
+    <div class="container case-grid">
+      {businesses.map((business) => (
+        <article class="case-card">
+          <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} loading="lazy" />
+          <p class="eyebrow">{business.niche}</p>
+          <h2>{business.businessName}</h2>
+          <p>{business.problemSolved}</p>
+          <dl>
+            <div><dt>Ideal client</dt><dd>{business.idealClient}</dd></div>
+            <div><dt>Key pages</dt><dd>{business.keyPages.join(', ')}</dd></div>
+          </dl>
+          <div class="cta-row">
+            <a class="button-primary" href={sitePath(`examples/${business.slug}/`)}>View example</a>
+            <a class="button-secondary" href={sitePath(`premium/${business.slug}/`)}>View expanded site</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</MarketingLayout>

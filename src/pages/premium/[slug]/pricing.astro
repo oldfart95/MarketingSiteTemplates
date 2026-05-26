@@ -1,16 +1,17 @@
 ---
 import PremiumLayout from '../../../layouts/PremiumLayout.astro';
 import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+import { sitePath } from '../../../lib/paths';
 export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
-const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
-const basePath = `/premium/${business.slug}`;
+const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect(sitePath());
+const basePath = sitePath(`premium/${business.slug}`);
 ---
-<PremiumLayout business={business} pageTitle={`Packages | ${business.businessName}`}>
+<PremiumLayout business={business} pageTitle={`Options | ${business.businessName}`}>
   <section class="page-hero">
     <div class="container narrow">
-      <p class="eyebrow">Packages</p>
-      <h1>Help buyers understand their best starting point</h1>
-      <p class="lead">These are static package cards, not a checkout flow. They create clarity without adding payment, accounts, or backend work.</p>
+      <p class="eyebrow">Options</p>
+      <h1>Compare common ways to begin.</h1>
+      <p class="lead">These options help visitors understand fit before reaching out. Final recommendations depend on timing, details, and priorities.</p>
     </div>
   </section>
 
@@ -34,9 +35,9 @@ const basePath = `/premium/${business.slug}`;
     <div class="container split">
       <div>
         <p class="eyebrow">Not sure?</p>
-        <h2>Use the form and let the business guide the recommendation</h2>
+        <h2>Start with a short conversation.</h2>
       </div>
-      <p class="body-copy">This section is useful for service providers who want pricing transparency without trapping themselves in fixed quotes.</p>
+      <p class="body-copy">The team can help narrow the right next step after learning what is happening, where help is needed, and what deadline matters.</p>
     </div>
   </section>
 </PremiumLayout>

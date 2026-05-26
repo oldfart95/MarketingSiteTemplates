@@ -8,8 +8,8 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Process</p>
-      <h1>Show prospects what happens after they reach out</h1>
-      <p class="lead">Uncertainty quietly kills inquiries. This page turns the client journey into something calm, visible, and easy to say yes to.</p>
+      <h1>Know what happens after you reach out.</h1>
+      <p class="lead">A clear process makes the first step easier and keeps expectations visible from the beginning.</p>
     </div>
   </section>
 
@@ -31,7 +31,7 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">Common questions</p>
-        <h2>FAQ blocks that reduce hesitation</h2>
+        <h2>Answers before you call</h2>
       </div>
       <div class="faq-list">
         {business.premium.faqs.map((item) => (

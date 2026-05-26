@@ -8,8 +8,8 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Contact</p>
-      <h1>A static intake page that still feels useful</h1>
-      <p class="lead">This form is designed as a frontend template pattern. It can post to a form service later, or be swapped for a simple phone-first CTA.</p>
+      <h1>Start with a focused request.</h1>
+      <p class="lead">Share what is happening, where you are located, and the best way to follow up.</p>
     </div>
   </section>
 
@@ -38,7 +38,7 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
           Message
           <textarea name="message" rows="5"></textarea>
         </label>
-        <button class="button button--solid" type="submit">Prepare Message</button>
+        <button class="button button--solid" type="submit">{business.primaryCTA}</button>
       </form>
 
       <aside class="detail-panel contact-sidebar">

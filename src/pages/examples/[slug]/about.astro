@@ -8,7 +8,7 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">About & trust</p>
-      <h1>A local presence that feels established from the first click</h1>
+      <h1>A local business with a clear promise</h1>
       <p class="lead">{business.about}</p>
     </div>
   </section>
@@ -18,13 +18,10 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
         {business.galleryImages.map((image) => <img src={image.src} alt={image.alt} loading="lazy" />)}
       </div>
       <div>
-        <p class="eyebrow">Why clients choose us</p>
-        <h2>Calm, credible, and ready for real inquiries</h2>
+        <p class="eyebrow">What clients can count on</p>
+        <h2>Confidence before the appointment</h2>
         <div class="check-list">
-          <p><span></span>Prompt communication and transparent pricing.</p>
-          <p><span></span>Qualified team with clear next steps.</p>
-          <p><span></span>Respectful, community-first service approach.</p>
-          <p><span></span>Pages structured for local search and fast mobile scans.</p>
+          {business.trustPoints.map((point) => <p><span></span>{point}</p>)}
         </div>
       </div>
     </div>
@@ -32,8 +29,8 @@ const business = getBusiness(Astro.params.slug!); if (!business) return Astro.re
   <section class="section section--compact section--surface">
     <div class="container stat-strip">
       <div><strong>{business.serviceArea.length}</strong><span>nearby communities served</span></div>
-      <div><strong>2</strong><span>sample testimonials included</span></div>
-      <div><strong>5</strong><span>client-ready pages</span></div>
+      <div><strong>{business.services.length}</strong><span>primary service paths</span></div>
+      <div><strong>{business.testimonials.length}</strong><span>customer voices featured</span></div>
     </div>
   </section>
 </BaseLayout>

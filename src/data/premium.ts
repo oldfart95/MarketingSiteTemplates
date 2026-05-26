@@ -20,8 +20,8 @@ const sharedProcess = [
 
 const premiumFeatures: Record<string, PremiumFeatureSet> = {
   'summit-home-services': {
-    promise: 'A rugged, conversion-focused site for a busy home-service crew that needs calls, estimates, and visible proof of quality.',
-    highlights: ['Same-week estimates', 'Before-and-after gallery', 'Neighborhood service pages', 'Maintenance plan upsells'],
+    promise: 'A rugged home-service crew for repairs, room refreshes, and punch-list work that needs a clear estimate and a clean finished result.',
+    highlights: ['Same-week estimates', 'Before-and-after photos', 'Neighborhood coverage', 'Property care plans'],
     packages: [
       { name: 'Small Repair Visit', price: 'From $185', description: 'A focused visit for punch-list items, holes, trim, fixtures, and small fixes.', features: ['Photo review before booking', 'Two-hour appointment window', 'Materials guidance'] },
       { name: 'Room Refresh', price: 'Custom quote', description: 'Drywall touch-ups, paint, and finish details for one or more rooms.', features: ['Written scope', 'Color and finish notes', 'Clean-site checklist'] },
@@ -29,7 +29,7 @@ const premiumFeatures: Record<string, PremiumFeatureSet> = {
     ],
     process: sharedProcess,
     faqs: [
-      { question: 'Can I send photos before scheduling?', answer: 'Yes. The template includes photo-friendly intake copy so the business can screen small jobs quickly.' },
+      { question: 'Can I send photos before scheduling?', answer: 'Yes. Photos help the team understand scope, materials, access, and whether an in-person visit is needed.' },
       { question: 'Does this work for emergency calls?', answer: 'It can. The alert band and contact sections are built to support urgent-call messaging.' },
       { question: 'Can the service areas become their own pages later?', answer: 'Yes. The service area section is structured so future local landing pages are straightforward.' }
     ],
@@ -45,7 +45,7 @@ const premiumFeatures: Record<string, PremiumFeatureSet> = {
     hours: 'Monday-Friday, 7:30 AM-5:30 PM'
   },
   'peaceful-harbor-care': {
-    promise: 'A soft, high-trust site for organizations where tone, reassurance, and private next steps matter more than aggressive selling.',
+    promise: 'Calm, respectful support for families who need privacy, reassurance, and a clear next step during sensitive decisions.',
     highlights: ['Guided inquiry path', 'Resource library', 'Care-team bios', 'Private consultation CTA'],
     packages: [
       { name: 'Initial Guidance Call', price: 'No-cost', description: 'A gentle starting point for families who need clarity before making decisions.', features: ['Private conversation', 'Next-step summary', 'Resource recommendations'] },
@@ -56,7 +56,7 @@ const premiumFeatures: Record<string, PremiumFeatureSet> = {
     faqs: [
       { question: 'Can the wording be made more sensitive?', answer: 'Yes. Every section is plain text in the data model so tone can be softened or made more formal.' },
       { question: 'Can this support nonprofit or ministry content?', answer: 'Yes. The resource, team, services, and process pages are intentionally flexible.' },
-      { question: 'Does the form collect private medical details?', answer: 'No. It is a static inquiry form pattern and should stay limited to basic contact needs.' }
+      { question: 'Does the form collect private medical details?', answer: 'No. The first inquiry should stay focused on basic contact information and the kind of support the family needs.' }
     ],
     resources: [
       { title: 'How to Prepare for a First Conversation', description: 'A reassuring guide for families who are unsure what to ask first.', category: 'Family Guide' },
@@ -70,8 +70,8 @@ const premiumFeatures: Record<string, PremiumFeatureSet> = {
     hours: 'Monday-Friday, 8:30 AM-5:00 PM'
   },
   'harbor-point-advisors': {
-    promise: 'A polished advisory site for firms that need credibility, service clarity, consultation bookings, and resource-led lead generation.',
-    highlights: ['Consultation funnel', 'Package comparison', 'Industry sections', 'Resource hub'],
+    promise: 'Practical accounting and advisory help for owners who need cleaner books, fewer surprises, and a clearer plan.',
+    highlights: ['Consultation path', 'Package clarity', 'Industry focus', 'Resource hub'],
     packages: [
       { name: 'Startup Setup', price: 'From $650', description: 'A clean foundation for new owners who need books, payroll basics, and filing confidence.', features: ['Entity checklist', 'Chart of accounts', 'First reporting review'] },
       { name: 'Monthly Advisory', price: 'From $425/mo', description: 'Ongoing bookkeeping, reporting, and owner guidance for growing businesses.', features: ['Monthly close', 'Management reports', 'Quarterly planning call'] },
@@ -81,7 +81,7 @@ const premiumFeatures: Record<string, PremiumFeatureSet> = {
     faqs: [
       { question: 'Can prospects self-select a package?', answer: 'Yes. Package cards clarify common starting points while still routing users to a consultation.' },
       { question: 'Can this support niche industries?', answer: 'Yes. Industry and resource sections can be swapped for contractors, retailers, clinics, or firms.' },
-      { question: 'Does this include online payment?', answer: 'No. It stays static, but it can link to existing scheduling, payment, or portal tools.' }
+      { question: 'Can this connect to our existing tools?', answer: 'Yes. The site can point prospects to existing scheduling, payment, or client portal tools when needed.' }
     ],
     resources: [
       { title: 'Monthly Close Checklist', description: 'A practical article slot that shows business owners how organized books should feel.', category: 'Operations' },

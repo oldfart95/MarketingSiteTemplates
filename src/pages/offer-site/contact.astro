@@ -1,14 +1,17 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 ---
-<MarketingLayout title="Start Project | Website Factory" description="Start your website project with intake details.">
+<MarketingLayout title="Start Project | Website Factory" description="Start a professional website launch for a local business.">
   <section class="content-section"><div class="container prose">
-    <h1>Start Project</h1>
-    <p>Email intake fallback: <a href="mailto:hello@example.com?subject=Website%20Project%20Intake">hello@example.com</a></p>
-    <form aria-label="Project intake form">
-      <p><label>Name<br /><input type="text" name="name" required /></label></p>
-      <p><label>Business Name<br /><input type="text" name="business" required /></label></p>
-      <p><label>What you need<br /><textarea name="needs" rows="5" required></textarea></label></p>
+    <p class="eyebrow">Start Project Intake</p>
+    <h1>Book a Website Launch Review</h1>
+    <p>Share the essentials and start a conversation about whether the Professional Website Launch is the right fit.</p>
+    <p>Email intake fallback: <a href="mailto:hello@example.com?subject=Website%20Launch%20Review">hello@example.com</a></p>
+    <form aria-label="Project intake form" class="intake-form">
+      <label>Name<input type="text" name="name" required /></label>
+      <label>Business Name<input type="text" name="business" required /></label>
+      <label>Website or current online presence<input type="url" name="website" /></label>
+      <label>What needs to improve?<textarea name="needs" rows="5" required></textarea></label>
       <button type="submit" class="button-primary">Submit Intake</button>
     </form>
   </div></section>
