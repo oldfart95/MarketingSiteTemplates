@@ -2,7 +2,7 @@
 import MarketingLayout from '../layouts/MarketingLayout.astro';
 import PackageLadder from '../components/sections/PackageLadder.astro';
 import { sitePath } from '../lib/paths';
-import { copywritingOptions } from '../data/offer-site';
+import { copywritingOptions, offerSiteConfig } from '../data/offer-site';
 
 const includedItems = [
   {
@@ -66,23 +66,40 @@ const processSteps = [
   <section class="hero-section offer-hero">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">Professional Website Launch - starting at $3,500</p>
+        <p class="eyebrow">Local business websites from $1,500</p>
         <h1>A credibility website built to turn local trust into calls.</h1>
-        <p>We plan, write, design, and launch a polished static website for service businesses that need to look established, explain the offer clearly, and make the next step obvious.</p>
+        <p>We plan, write, design, and launch polished websites for service businesses so customers know what you do, why to trust you, and how to reach you without a complicated backend.</p>
         <div class="cta-row">
-          <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
-          <a class="button-secondary" href={sitePath('demo-library/')}>See Premium Examples</a>
+          <a class="button-primary" href={sitePath('offer-site/contact')}>Request a Launch Plan</a>
+          <a class="button-secondary" href={sitePath('demo-library/')}>See Sample Builds</a>
         </div>
       </div>
       <div class="panel premium-price-card">
-        <span>Anchor package</span>
-        <strong>Professional Website Launch</strong>
-        <p>Starting at $3,500</p>
+        <span>Choose the right fit</span>
+        <strong>Starter, Professional, Custom, or Care</strong>
+        <p>Clear launch paths for different levels of copy, proof, layout, and ongoing support.</p>
         <ul>
-          <li>4-5 core pages</li>
-          <li>Copy structure and conversion flow</li>
-          <li>Deployment and one revision round</li>
+          <li>Starter sites from $1,500</li>
+          <li>Professional launches from $3,500</li>
+          <li>Custom layout builds from $7,000</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <PackageLadder />
+
+  <section class="content-section">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Who you work with</p>
+        <h2>One focused builder, not a handoff maze.</h2>
+        <p>{offerSiteConfig.founderLine} The work stays practical: clarify the offer, shape the pages, build the site, check the details, and launch without turning a local business website into a months-long production.</p>
+      </div>
+      <div class="premium-card">
+        <h3>Current proof stage</h3>
+        <p>{offerSiteConfig.proofLine}</p>
+        <p>That means pricing is clear, scope is protected, and the sample builds show the launch system before a deeper testimonial library exists.</p>
       </div>
     </div>
   </section>
@@ -100,14 +117,12 @@ const processSteps = [
     </div>
   </section>
 
-  <PackageLadder />
-
   <section class="content-section muted-bg">
     <div class="container section-heading">
       <p class="eyebrow">Copywriting support</p>
       <h2>Need help with the words too?</h2>
       <p>Many local businesses do not have polished website copy ready. That is normal. The process can include a short intake or interview, service clarification, homepage messaging, service copy, FAQs, and calls to action.</p>
-      <p>The goal is not fancy marketing language. It is clear, truthful, fact-checked copy that helps prospects understand, trust, and contact the business.</p>
+      <p>The goal is not fancy marketing language. It is clear, truthful, fact-checked copy that helps prospects understand, trust, and contact the business. Copywriting add-ons are available from $750 when rough notes need to become website-ready pages.</p>
     </div>
     <div class="container card-grid">
       {copywritingOptions.map((option) => (
@@ -117,56 +132,6 @@ const processSteps = [
           <p>{option.description}</p>
         </article>
       ))}
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="container two-col">
-      <div>
-        <p class="eyebrow">Custom layout</p>
-        <h2>Have a sketch or custom layout?</h2>
-        <p>Sketches, mood boards, and custom page structures are welcome. They move the project into the Custom Layout Build tier because the work requires custom design translation rather than the standard launch system.</p>
-      </div>
-      <div class="panel light-panel">
-        <h3>Why it costs more</h3>
-        <p>Custom layout work adds planning for page composition, responsive interpretation, edge cases across screen sizes, and extra QA before launch.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="container comparison-section">
-      <p class="eyebrow">Starter Credibility Site vs. Professional Launch</p>
-      <h2>Starter makes you credible online. Professional helps customers understand, trust, and choose you.</h2>
-      <p class="comparison-intro">If you need a premium web presence fast, Starter is the right move. If you need your website to explain higher-value work and reduce buyer hesitation, Professional is built for that job.</p>
-      <div class="comparison-grid">
-        <article class="comparison-card starter">
-          <h3>Starter Credibility Site</h3>
-          <p>Best for businesses that need a clean, credible web presence quickly.</p>
-          <ul>
-            <li>4-5 core pages</li>
-            <li>Basic service descriptions</li>
-            <li>Mobile-friendly layout</li>
-            <li>Contact page and clear call-to-action</li>
-            <li>Basic local SEO structure</li>
-            <li>Simple trust and credibility layout</li>
-          </ul>
-        </article>
-        <article class="comparison-card professional">
-          <h3>Professional Website Launch</h3>
-          <p>Best for businesses that need the site to explain, persuade, and build trust.</p>
-          <ul>
-            <li>Expanded service copy</li>
-            <li>Stronger homepage positioning</li>
-            <li>FAQs that answer customer objections</li>
-            <li>Testimonials or proof sections</li>
-            <li>Gallery or before/after structure</li>
-            <li>Service-area messaging</li>
-            <li>More polished conversion flow</li>
-            <li>Better fit for higher-value services</li>
-          </ul>
-        </article>
-      </div>
     </div>
   </section>
 
@@ -200,7 +165,7 @@ const processSteps = [
       <div>
         <p class="eyebrow">Why it is worth it</p>
         <h2>Your website has to do sales work before anyone contacts you.</h2>
-        <p>A stronger site reduces doubt, explains the value of your service, shows proof, and gives qualified prospects a low-friction next step. That is the difference between a brochure and a credibility asset.</p>
+        <p>A stronger site reduces doubt before the first call. It helps avoid poor first impressions, explains higher-value services, shows proof, and gives qualified prospects a low-friction next step.</p>
       </div>
       <div class="timeline-list">
         {processSteps.map((step, index) => (
@@ -217,7 +182,7 @@ const processSteps = [
         <h2>Monthly care for edits, upkeep, and steady improvement.</h2>
         <p>After launch, care plans can cover content edits, new photos, seasonal updates, landing-page improvements, and priority support.</p>
       </div>
-      <a class="button-primary" href={sitePath('offer-site/contact')}>Book a Website Launch Review</a>
+      <a class="button-primary" href={sitePath('offer-site/contact')}>Book a Website Review</a>
     </div>
   </section>
 </MarketingLayout>

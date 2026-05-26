@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { sitePath } from '../lib/paths';
+import { offerSiteConfig } from '../data/offer-site';
 const {
   title = 'FrontDoor Web Co.',
   description = 'Credible websites for local businesses people need to trust.',
@@ -33,9 +34,20 @@ const {
       <slot />
     </main>
     <footer class="marketing-footer">
-      <div class="container">
-        <p><strong>FrontDoor Web Co.</strong> builds credible websites for local businesses people need to trust.</p>
-        <p><a href={sitePath('demo-library/')}>Browse demo library</a></p>
+      <div class="container marketing-footer-grid">
+        <div>
+          <strong>FrontDoor Web Co.</strong>
+          <p>Credible websites for local businesses people need to trust.</p>
+          <p>{offerSiteConfig.serviceArea}</p>
+        </div>
+        <div>
+          <strong>Work directly with the builder</strong>
+          <p>{offerSiteConfig.founderLine}</p>
+        </div>
+        <div>
+          <strong>Start here</strong>
+          <p><a href={sitePath('offer-site/contact')}>Book a Website Review</a><br /><a href={sitePath('demo-library/')}>Browse sample builds</a></p>
+        </div>
       </div>
     </footer>
   </body>

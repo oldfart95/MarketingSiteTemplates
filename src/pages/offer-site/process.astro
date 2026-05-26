@@ -2,11 +2,11 @@
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 
 const launchSteps = [
-  ['Intake', 'Business details, services, audience, proof points, photos, copy readiness, and desired calls to action.'],
-  ['Draft', 'A complete first version with page flow, copy structure, visual direction, and responsive layout.'],
-  ['Review', 'One focused revision round to correct facts, tighten wording, adjust images, and refine conversion details.'],
-  ['Launch', 'Static deployment, final checks, and handoff details for the live site.'],
-  ['Care', 'Optional monthly support for edits, new content, and ongoing improvement.'],
+  ['Intake', '1-2 business days', 'Business details, services, audience, proof points, photos, copy readiness, and desired calls to action.'],
+  ['Draft', '5-8 business days', 'A complete first version with page flow, copy structure, visual direction, and responsive layout.'],
+  ['Review', '2-4 business days', 'One focused revision round to correct facts, tighten wording, adjust images, and refine conversion details.'],
+  ['Launch', '1-2 business days', 'Static deployment, final checks, and handoff details for the live site.'],
+  ['Care', 'Monthly', 'Optional support for small update batches, photo swaps, seasonal content, and ongoing improvements.'],
 ];
 
 const copySteps = [
@@ -25,13 +25,36 @@ const copySteps = [
   </div></section>
   <section class="content-section muted-bg">
     <div class="container timeline-list timeline-list--wide">
-      {launchSteps.map(([title, description], index) => (
-        <article><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></article>
+      {launchSteps.map(([title, timing, description], index) => (
+        <article><span>0{index + 1}</span><strong>{title}</strong><em>{timing}</em><p>{description}</p></article>
       ))}
     </div>
   </section>
 
   <section class="content-section">
+    <div class="container comparison-section">
+      <p class="eyebrow">Keeping momentum</p>
+      <h2>Launch speed depends on clear inputs and timely approvals.</h2>
+      <p class="comparison-intro">A standard launch is usually 7-14 business days after core assets and answers are ready. Delays in photos, copy review, approvals, fact-checking, or new direction will move the launch date.</p>
+      <div class="comparison-grid">
+        <article class="comparison-card">
+          <h3>Client responsibilities</h3>
+          <ul>
+            <li>Provide accurate business facts and service details</li>
+            <li>Send photos, reviews, credentials, or proof if available</li>
+            <li>Review copy for accuracy before launch</li>
+            <li>Give feedback in one organized revision pass</li>
+          </ul>
+        </article>
+        <article class="comparison-card">
+          <h3>Revision boundaries</h3>
+          <p>A revision round means tightening the approved direction: correcting facts, adjusting wording, swapping images, and polishing layout. New pages, new strategy, custom features, or a different design direction are new scope.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section muted-bg">
     <div class="container section-heading">
       <p class="eyebrow">Copy process</p>
       <h2>If the words are not ready, the process is still simple.</h2>

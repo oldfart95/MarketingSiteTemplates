@@ -285,6 +285,21 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
+.sample-label {
+  display: inline-flex;
+  width: fit-content;
+  border: 1px solid color-mix(in srgb, var(--cta, #1d4ed8) 24%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface, #f8fafc) 72%, white);
+  color: var(--brand, #111827);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.85rem;
+  padding: 0.35rem 0.65rem;
+  text-transform: uppercase;
+}
+
 h1,
 h2,
 h3,
@@ -711,6 +726,24 @@ h3 {
   display: grid;
   gap: 1rem;
   padding: clamp(1.15rem, 3vw, 1.6rem);
+}
+
+.intake-form fieldset {
+  display: grid;
+  gap: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.38);
+  border-radius: 0.75rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.intake-form legend {
+  color: var(--cta, #1d4ed8);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  padding-inline: 0.35rem;
+  text-transform: uppercase;
 }
 
 .intake-form label {
@@ -1308,9 +1341,10 @@ h3 {
   min-height: 3.4rem;
 }
 
-.recommendation-badge {
+.price-card .recommendation-badge {
   display: inline-flex;
   max-width: 100%;
+  margin: 0;
   border-radius: 999px;
   background: #dcfce7;
   color: #14532d;
@@ -1318,6 +1352,15 @@ h3 {
   font-weight: 850;
   line-height: 1.1;
   padding: 0.32rem 0.55rem;
+}
+
+.scope-note {
+  border-top: 1px solid rgba(148, 163, 184, 0.32);
+  color: #475569;
+  font-size: 0.92rem;
+  font-weight: 650;
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .price-card,
@@ -1359,6 +1402,29 @@ h3 {
   color: #0f172a;
 }
 
+.service-group-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+}
+
+.service-group-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.service-group-card h2 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+}
+
+.service-group-card ul {
+  display: grid;
+  gap: 0.45rem;
+  margin: auto 0 0;
+  padding-left: 1.2rem;
+}
+
 .faq-grid {
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
 }
@@ -1383,6 +1449,34 @@ h3 {
   padding: 1.5rem 0;
 }
 
+.marketing-footer-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.marketing-footer strong {
+  display: block;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+
+.marketing-footer p {
+  color: #475569;
+  margin: 0 0 0.5rem;
+}
+
+.marketing-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.marketing-footer a {
+  color: #0f172a;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
 input,
 textarea {
   width: 100%;
@@ -1396,5 +1490,11 @@ textarea {
   .two-col,
   .comparison-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 760px) {
+  .marketing-footer-grid {
+    grid-template-columns: 1.2fr 1fr 0.9fr;
   }
 }

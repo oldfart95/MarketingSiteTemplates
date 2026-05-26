@@ -1,5 +1,23 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+
+const faqs = [
+  ['What makes this worth $3,500+?', 'The package includes strategy, copy structure, design polish, local SEO basics, contact flow, deployment, and revision time. It is built to help prospects understand and trust the business faster.'],
+  ['How much do I need to provide?', 'Bring business details, service notes, locations, photos if available, testimonials, and the best way for prospects to contact you. The project turns those inputs into a clear site.'],
+  ['How long does a launch usually take?', 'Most standard launches take 7-14 business days after core assets, intake answers, and approvals are received. Custom layout work, missing assets, deeper copywriting, or delayed feedback can extend the schedule.'],
+  ['What counts as a revision round?', 'A revision round is one organized pass to correct facts, adjust wording, swap images, and polish the approved layout. New pages, new strategy, custom features, or a different design direction are scoped separately.'],
+  ['Who owns the website after launch?', 'The client owns the finished website content and launch files after final payment. Any third-party hosting, domain, or platform accounts should be in the client business name whenever possible.'],
+  ['Do you handle domains and hosting?', 'I can help point the site to a domain and deploy it to a static host such as GitHub Pages, Cloudflare Pages, or Netlify. Domain registration and any third-party hosting fees are separate.'],
+  ['What about photos?', 'Client-provided photos, project images, reviews, and proof are best. If those are not ready, the site can launch with a clean proof structure and add stronger photos later through Monthly Care.'],
+  ['Can this grow later?', 'Yes. The first launch can be expanded with service pages, city pages, new galleries, seasonal promotions, and stronger proof over time. New pages or larger content projects are quoted separately.'],
+  ['What happens after launch?', 'You can leave the site as a simple low-maintenance site or use Monthly Care for small edits, photo swaps, seasonal updates, page improvements, and priority support.'],
+  ['Can I pause or cancel Monthly Care?', 'Yes. Monthly Care is meant to stay practical. If you no longer need active support, you can pause future care work after the current paid period.'],
+  ['What if I do not have website copy?', 'That is common. We can start with intake questions, rough notes, service details, and a short interview so the site still has clear, credible copy.'],
+  ['Can you write the copy for me?', 'Yes. Guided copywriting and full copy plus positioning can be added when you need help turning facts, services, and proof into website-ready pages.'],
+  ['What do you need from me to write the copy?', 'We need accurate facts, main services, service area, photos or proof if available, reviews or testimonials if you have them, and honest answers about why customers choose you.'],
+  ['Do I need to be a good writer?', 'No. You bring the real business details. We help organize the message, clean up the tone, and shape the copy so prospects can understand and trust the business.'],
+  ['Do you guarantee results?', 'No agency can honestly guarantee sales. What we can do is build the site to improve clarity, trust, speed, and inquiry flow with fact-checked copy and practical calls to action.'],
+];
 ---
 <MarketingLayout title="FAQ | FrontDoor Web Co." description="Answers for local business owners considering a professional website launch.">
   <section class="content-section"><div class="container prose">
@@ -8,15 +26,9 @@ import MarketingLayout from '../../layouts/MarketingLayout.astro';
   </div></section>
   <section class="content-section muted-bg">
     <div class="container faq-grid">
-      <article class="faq-card"><h2>What makes this worth $3,500+?</h2><p>The package includes strategy, copy structure, design polish, local SEO basics, contact flow, deployment, and revision time. It is built to help prospects understand and trust the business faster.</p></article>
-      <article class="faq-card"><h2>How much do I need to provide?</h2><p>Bring business details, service notes, locations, photos if available, testimonials, and the best way for prospects to contact you. The project turns those inputs into a clear site.</p></article>
-      <article class="faq-card"><h2>Can this grow later?</h2><p>Yes. The first launch can be expanded with service pages, city pages, new galleries, seasonal promotions, and stronger proof over time.</p></article>
-      <article class="faq-card"><h2>Do you handle hosting?</h2><p>Yes. The launch can be deployed to a static host such as GitHub Pages, Cloudflare Pages, or Netlify.</p></article>
-      <article class="faq-card"><h2>What if I do not have website copy?</h2><p>That is common. We can start with intake questions, rough notes, service details, and a short interview so the site still has clear, credible copy.</p></article>
-      <article class="faq-card"><h2>Can you write the copy for me?</h2><p>Yes. Guided copywriting and full copy plus positioning can be added when you need help turning facts, services, and proof into website-ready pages.</p></article>
-      <article class="faq-card"><h2>What do you need from me to write the copy?</h2><p>We need accurate facts, main services, service area, photos or proof if available, reviews or testimonials if you have them, and honest answers about why customers choose you.</p></article>
-      <article class="faq-card"><h2>Do I need to be a good writer?</h2><p>No. You bring the real business details. We help organize the message, clean up the tone, and shape the copy so prospects can understand and trust the business.</p></article>
-      <article class="faq-card"><h2>Do you guarantee results?</h2><p>No. We do not guarantee sales or make false claims. The goal is a clearer, more trustworthy website with fact-checked copy and practical calls to action.</p></article>
+      {faqs.map(([question, answer]) => (
+        <article class="faq-card"><h2>{question}</h2><p>{answer}</p></article>
+      ))}
     </div>
   </section>
 </MarketingLayout>

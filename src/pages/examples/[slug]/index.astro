@@ -10,6 +10,7 @@ const basePath = sitePath(`examples/${business.slug}`);
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
+        <p class="sample-label">{business.demoNotes.label}</p>
         <p class="eyebrow">{business.niche} in {business.city}</p>
         <h1>{business.tagline}</h1>
         <p class="lead">{business.problemSolved}</p>
@@ -35,7 +36,7 @@ const basePath = sitePath(`examples/${business.slug}`);
     <div class="container">
       <div class="section-heading">
         <p class="eyebrow">Services</p>
-        <h2>Clear help for the calls customers are ready to make</h2>
+        <h2>{business.demoNotes.serviceHeading}</h2>
         <p>{business.idealClient}</p>
       </div>
       <div class="card-grid">
@@ -54,7 +55,7 @@ const basePath = sitePath(`examples/${business.slug}`);
     <div class="container split">
       <div>
         <p class="eyebrow">Why clients call</p>
-        <h2>Trust signals before the first conversation</h2>
+        <h2>{business.demoNotes.trustHeading}</h2>
         <p class="body-copy">{business.about}</p>
       </div>
       <div class="trust-card-grid">
@@ -70,8 +71,8 @@ const basePath = sitePath(`examples/${business.slug}`);
 
   <section class="section section--compact section--surface">
     <div class="container stat-strip">
-      {business.trustPoints.slice(0, 3).map((point) => (
-        <div><strong>{point}</strong><span>{business.city} area clients know what to expect.</span></div>
+      {business.trustPoints.slice(0, 3).map((point, index) => (
+        <div><strong>{point}</strong><span>{business.demoNotes.statNotes[index]}</span></div>
       ))}
     </div>
   </section>

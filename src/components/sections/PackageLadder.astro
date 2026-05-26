@@ -24,6 +24,7 @@ const { heading = 'Choose the right launch path', intro = 'Each tier has a diffe
         <ul>
           {pkg.includes.map((item) => <li>{item}</li>)}
         </ul>
+        {pkg.notFor && <p class="scope-note">{pkg.notFor}</p>}
         <a class={pkg.recommended ? 'button-primary' : 'button-secondary'} href={sitePath('offer-site/contact')}>{pkg.ctaLabel}</a>
       </article>
     ))}

@@ -20,6 +20,12 @@ export type BusinessData = {
   trustPoints: string[];
   objections: { concern: string; response: string }[];
   faqs: { question: string; answer: string }[];
+  demoNotes: {
+    label: string;
+    serviceHeading: string;
+    trustHeading: string;
+    statNotes: string[];
+  };
   theme: {
     primary: string;
     secondary: string;
@@ -74,6 +80,16 @@ export const businesses: BusinessData[] = [
       { question: 'Do you work with landlords or property managers?', answer: 'Yes. Summit is a strong fit for punch lists, move-out repairs, and room refreshes between tenants.' },
       { question: 'What areas do you serve?', answer: 'The core service area includes Boise, Meridian, Nampa, and Eagle.' }
     ],
+    demoNotes: {
+      label: 'Sample Starter-style site',
+      serviceHeading: 'Repair services organized around real homeowner calls',
+      trustHeading: 'Proof that the crew will show up, protect the space, and finish cleanly',
+      statNotes: [
+        'Photo estimates help small repairs start without a long back-and-forth.',
+        'Clean-site habits matter when the work happens inside lived-in rooms.',
+        'Texture and finish notes help the repair blend with the rest of the wall.'
+      ]
+    },
     theme: { primary: '#172033', secondary: '#b45309', accent: '#f59e0b', surface: '#fff4df' },
     seo: {
       title: 'Drywall & Painting in Boise | Summit Home Services',
@@ -121,6 +137,16 @@ export const businesses: BusinessData[] = [
       { question: 'Do you help with pre-planning?', answer: 'Yes. Peaceful Harbor supports private planning conversations and practical documentation.' },
       { question: 'Is our conversation private?', answer: 'Yes. Family details are handled with discretion, care, and respect.' }
     ],
+    demoNotes: {
+      label: 'Sample Starter-style site',
+      serviceHeading: 'Support options written for families who need a gentle first step',
+      trustHeading: 'Reassurance before a private conversation',
+      statNotes: [
+        'Private conversations help families begin without feeling pressured.',
+        'A gentle planning path gives relatives the same calm information.',
+        'Local support language makes the next step feel close and human.'
+      ]
+    },
     theme: { primary: '#243126', secondary: '#047857', accent: '#a78bfa', surface: '#edf7ef' },
     seo: {
       title: 'Compassionate Family Support in Greenville | Peaceful Harbor Care',
@@ -168,6 +194,16 @@ export const businesses: BusinessData[] = [
       { question: 'Do you work with contractors and local service businesses?', answer: 'Yes. Harbor Point works well with owners who need job-cost clarity, cash-flow planning, and tax-ready books.' },
       { question: 'What happens in a consultation?', answer: 'The first call reviews your current system, reporting needs, deadlines, and the best next step.' }
     ],
+    demoNotes: {
+      label: 'Sample Starter-style site',
+      serviceHeading: 'Advisory services grouped around owner decisions',
+      trustHeading: 'Signals that the numbers will be explained clearly',
+      statNotes: [
+        'Monthly close language helps owners see the path to reliable books.',
+        'Plain-English reporting makes financial work feel less opaque.',
+        'Tax-aware planning points prospects toward fewer deadline surprises.'
+      ]
+    },
     theme: { primary: '#102033', secondary: '#0e7490', accent: '#fb923c', surface: '#eaf6fb' },
     seo: {
       title: 'Local Accounting in Columbus | Harbor Point Advisors',

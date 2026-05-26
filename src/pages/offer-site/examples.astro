@@ -1,31 +1,47 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
-import { businesses } from '../../data/templates';
 import { sitePath } from '../../lib/paths';
 ---
 <MarketingLayout title="Examples | FrontDoor Web Co." description="Premium local business website examples and case studies.">
   <section class="content-section"><div class="container prose">
     <p class="eyebrow">Examples</p>
-    <h1>Premium examples for local businesses that need credibility fast.</h1>
-    <p>Each example shows how the same launch package can support a different niche, customer concern, and conversion path.</p>
+    <h1>Use the demos to compare launch depth.</h1>
+    <p>The examples are sample businesses, not real clients. They show how the same launch system can flex from a focused Starter-style site into a deeper Professional expanded site.</p>
   </div></section>
+
   <section class="content-section muted-bg">
-    <div class="container case-grid">
-      {businesses.map((business) => (
-        <article class="case-card">
-          <p class="eyebrow">{business.niche}</p>
-          <h2>{business.businessName}</h2>
-          <p>{business.problemSolved}</p>
-          <dl>
-            <div><dt>Ideal client</dt><dd>{business.idealClient}</dd></div>
-            <div><dt>Key pages</dt><dd>{business.keyPages.join(', ')}</dd></div>
-          </dl>
-          <div class="cta-row">
-            <a class="button-primary" href={sitePath(`examples/${business.slug}/`)}>View example</a>
-            <a class="button-secondary" href={sitePath(`premium/${business.slug}/`)}>View expanded site</a>
-          </div>
-        </article>
-      ))}
+    <div class="container comparison-grid">
+      <article class="comparison-card starter">
+        <p class="eyebrow">Starter-style demo</p>
+        <h2>Focused credibility site</h2>
+        <p>Shows a simple 4-5 page structure with core services, trust proof, local context, and a direct contact path.</p>
+        <ul>
+          <li>Best for getting credible quickly</li>
+          <li>Useful when copy and proof are simple</li>
+          <li>Less custom strategy and page depth</li>
+        </ul>
+      </article>
+      <article class="comparison-card professional">
+        <p class="eyebrow">Professional expanded demo</p>
+        <h2>Deeper trust-building site</h2>
+        <p>Shows additional pages for process, service options, resources, team or about content, and a more complete inquiry flow.</p>
+        <ul>
+          <li>Best when customers compare carefully</li>
+          <li>Useful for higher-value services</li>
+          <li>More room for copy, proof, FAQs, and guidance</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">Browse samples</p>
+        <h2>See the local business demo library.</h2>
+        <p>The library includes a home-service business, a family-care organization, and a professional advisory firm so you can compare tone, proof, and page depth across industries.</p>
+      </div>
+      <a class="button-primary" href={sitePath('demo-library/')}>Open Demo Library</a>
     </div>
   </section>
 </MarketingLayout>

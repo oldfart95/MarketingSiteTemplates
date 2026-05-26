@@ -15,7 +15,7 @@ const basePath = sitePath(`premium/${business.slug}`);
         <p class="lead">{business.premium.promise}</p>
         <div class="action-row">
           <a href={`${basePath}/contact`} class="button button--solid">{business.primaryCTA}</a>
-          <a href={`${basePath}/pricing`} class="button button--ghost">Review options</a>
+          <a href={`${basePath}/pricing`} class="button button--ghost">Review service options</a>
         </div>
         <div class="trust-row">
           {business.premium.highlights.map((highlight) => <span>{highlight}</span>)}
@@ -24,8 +24,8 @@ const basePath = sitePath(`premium/${business.slug}`);
       <div class="hero-media premium-dashboard">
         <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} loading="eager" />
         <div class="mini-panel mini-panel--top">
-          <strong>{business.services.length} ways to get help</strong>
-          <span>{business.serviceArea.join(', ')}</span>
+          <strong>{business.services.length} service paths</strong>
+          <span>{business.services.map((service) => service.name).join(' · ')}</span>
         </div>
         <div class="hero-note">
           <strong>{business.primaryCTA}</strong>

@@ -1,5 +1,9 @@
 export const offerSiteConfig = {
   intakeEmail: '',
+  serviceArea: 'Serving local businesses remotely from the U.S.',
+  founderName: 'Daniel',
+  founderLine: 'Work directly with Daniel on the copy, structure, build, and launch plan.',
+  proofLine: 'FrontDoor is in pilot mode, using sample builds and a repeatable launch system while early client work is gathered.',
 };
 
 export const offerPackages = [
@@ -15,7 +19,8 @@ export const offerPackages = [
       'Contact page and call-to-action',
       'Basic local SEO structure',
     ],
-    ctaLabel: 'Ask About Starter',
+    notFor: 'Not for deeper messaging, complex proof sections, or custom layouts.',
+    ctaLabel: 'Request Starter Plan',
   },
   {
     name: 'Professional Website Launch',
@@ -33,7 +38,8 @@ export const offerPackages = [
       'Deployment',
       'One revision round',
     ],
-    ctaLabel: 'Start Project Intake',
+    notFor: 'Not for custom page designs from sketches or heavy brand exploration.',
+    ctaLabel: 'Request Launch Plan',
     recommended: true,
   },
   {
@@ -42,12 +48,14 @@ export const offerPackages = [
     eyebrow: 'Custom direction',
     bestFor: 'Clients bringing a sketch, custom layout idea, stronger brand direction, or a site that should not follow the standard template structure.',
     includes: [
-      'Custom design translation',
-      'Layout planning',
+      'Custom homepage wireframe',
+      'Section planning',
+      'Design mockup pass',
       'Responsive interpretation',
       'Expanded page QA',
-      'Launch support for the custom structure',
+      'Extra revision scope',
     ],
+    notFor: 'Not needed when the standard launch system already fits the project.',
     ctaLabel: 'Discuss Custom Layout',
   },
   {
@@ -56,12 +64,13 @@ export const offerPackages = [
     eyebrow: 'After launch',
     bestFor: 'Keeping the site updated after launch.',
     includes: [
-      'Small edits',
-      'New photos',
+      'One small update batch per month',
+      'Photo swaps',
       'Seasonal updates',
-      'Page improvements',
+      'Minor page improvements',
       'Priority support',
     ],
+    notFor: 'New pages, redesigns, advanced SEO, ads, and large content projects are quoted separately.',
     ctaLabel: 'Ask About Care',
   },
 ];
@@ -118,17 +127,17 @@ export const copywritingOptions = [
 export const copywritingAddOns = [
   {
     name: 'Copy Cleanup / Placement',
-    price: 'Included with most builds',
-    description: 'For clients who provide usable service, about, contact, and proof copy. We polish the wording and place it in the right sections.',
+    price: 'Included when copy is ready before kickoff',
+    description: 'For clients who provide usable service, about, contact, and proof copy. We polish the wording, clean up tone, and place it across the selected 4-5 page structure.',
   },
   {
     name: 'Guided Copywriting Add-On',
     price: 'Starting at $750',
-    description: 'For rough notes, scattered ideas, or partial drafts. We use intake questions and a short interview to draft the main pages.',
+    description: 'For rough notes, scattered ideas, or partial drafts. Includes intake questions, a short interview, main-page copy, basic FAQs, and call-to-action cleanup.',
   },
   {
     name: 'Full Copy + Positioning Add-On',
     price: 'Starting at $1,500',
-    description: 'For businesses starting with little usable copy. We clarify the offer, service framing, customer questions, trust points, FAQs, and calls to action.',
+    description: 'For businesses starting with little usable copy. Includes offer clarification, customer questions, service framing, trust points, FAQs, homepage messaging, and stronger calls to action.',
   },
 ];

@@ -1,19 +1,52 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 import { sitePath } from '../../lib/paths';
-import { serviceItems } from '../../data/offer-site';
+
+const serviceGroups = [
+  {
+    title: 'Strategy',
+    description: 'Clarify the audience, services, proof points, calls to action, and package fit before the page structure is built.',
+    items: ['Homepage positioning', 'Service hierarchy', 'Trust and proof planning', 'Launch scope'],
+  },
+  {
+    title: 'Website Build',
+    description: 'Design and build clear, mobile-friendly pages that make the business easier to understand and contact.',
+    items: ['4-5 core pages', 'Responsive layout', 'Gallery or proof setup', 'Contact flow'],
+  },
+  {
+    title: 'Copywriting',
+    description: 'Turn ready copy, rough notes, or interview answers into clear, truthful website copy that sounds professional and local.',
+    items: ['Intake questions', 'Service descriptions', 'About/trust copy', 'FAQs and calls to action'],
+  },
+  {
+    title: 'Launch',
+    description: 'Prepare the site for a simple, low-maintenance launch with clean structure and final checks.',
+    items: ['Static deployment', 'Metadata and page titles', 'Local service-area language', 'Pre-launch QA'],
+  },
+  {
+    title: 'Ongoing Care',
+    description: 'Keep the live site useful after launch with practical updates and priority support.',
+    items: ['Small update batches', 'Photo swaps', 'Seasonal updates', 'Minor page improvements'],
+  },
+];
 ---
 <MarketingLayout title="Services | FrontDoor Web Co." description="Professional website launch deliverables for local businesses.">
   <section class="content-section"><div class="container prose">
     <p class="eyebrow">Services</p>
-    <h1>Professional Website Launch</h1>
-    <p>A focused website package for local businesses that need a credible digital presence, stronger calls to action, and a launch path that does not require a complicated platform.</p>
+    <h1>Website services for local businesses</h1>
+    <p>Strategy, copy, design, launch, and care for local businesses that need to look credible, explain their services clearly, and make contact easy.</p>
   </div></section>
 
   <section class="content-section muted-bg">
-    <div class="container card-grid">
-      {serviceItems.map((item) => (
-        <article class="card premium-card"><h2>{item.title}</h2><p>{item.description}</p></article>
+    <div class="container service-group-grid">
+      {serviceGroups.map((group) => (
+        <article class="premium-card service-group-card">
+          <h2>{group.title}</h2>
+          <p>{group.description}</p>
+          <ul>
+            {group.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
       ))}
     </div>
   </section>
@@ -36,62 +69,11 @@ import { serviceItems } from '../../data/offer-site';
     </div>
   </section>
 
-  <section class="content-section muted-bg">
-    <div class="container two-col">
-      <div>
-        <p class="eyebrow">Copywriting</p>
-        <h2>Website Copywriting & Message Cleanup</h2>
-        <p>Some clients arrive with polished copy. Others bring rough notes, old brochures, scattered service lists, or no usable copy at all. The copy process is guided and practical.</p>
-      </div>
-      <div class="premium-card">
-        <h3>What it can include</h3>
-        <ul>
-          <li>Intake questions and a short interview</li>
-          <li>Homepage positioning</li>
-          <li>Service descriptions</li>
-          <li>About and trust copy</li>
-          <li>FAQ writing</li>
-          <li>Calls to action</li>
-          <li>Light local SEO structure</li>
-          <li>Tone cleanup so the site sounds professional but still like the business</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <section class="content-section">
-    <div class="container comparison-section" aria-labelledby="starter-vs-pro-launch-services">
-      <p class="eyebrow">Starter Credibility Site vs. Professional Launch</p>
-      <h2 id="starter-vs-pro-launch-services">Starter makes you credible online. Professional helps customers understand, trust, and choose you.</h2>
-      <p class="comparison-intro">Starter is best when you need a clean presence quickly. Professional is built for businesses that need stronger messaging, proof, and a more persuasive path to inquiry.</p>
-      <div class="comparison-grid">
-        <article class="comparison-card starter">
-          <h3>Starter Credibility Site</h3>
-          <p>Best for businesses that need a clean, credible web presence quickly.</p>
-          <ul>
-            <li>4-5 core pages</li>
-            <li>Basic service descriptions</li>
-            <li>Mobile-friendly layout</li>
-            <li>Contact page and call-to-action</li>
-            <li>Basic local SEO structure</li>
-            <li>Simple trust and credibility layout</li>
-          </ul>
-        </article>
-        <article class="comparison-card professional">
-          <h3>Professional Website Launch</h3>
-          <p>Best for businesses that need the site to explain, persuade, and build trust.</p>
-          <ul>
-            <li>Expanded service copy</li>
-            <li>Stronger homepage positioning</li>
-            <li>FAQs that answer customer objections</li>
-            <li>Testimonials or proof sections</li>
-            <li>Gallery or before/after structure</li>
-            <li>Service-area messaging</li>
-            <li>More polished conversion flow</li>
-            <li>Better suited for businesses trying to justify higher-value services</li>
-          </ul>
-        </article>
-      </div>
+    <div class="container prose">
+      <p class="eyebrow">Local SEO basics</p>
+      <h2>Clear structure, not ranking promises.</h2>
+      <p>Local SEO basics means headings, page titles, service language, location context, clean metadata, and a fast static structure. It does not mean guaranteed Google rankings, ad management, or advanced SEO campaigns.</p>
     </div>
   </section>
 
@@ -100,11 +82,11 @@ import { serviceItems } from '../../data/offer-site';
       <div>
         <p class="eyebrow">Custom layout</p>
         <h2>Have a sketch or custom layout?</h2>
-        <p>Bring the sketch, mood board, wireframe, or custom page structure. If the project needs custom design translation instead of the standard launch system, it belongs in the Custom Layout Build tier.</p>
+        <p>Bring the sketch, mood board, wireframe, or custom page structure. If the project needs custom design translation instead of the standard launch system, it belongs in the Custom Layout Build tier and may require extra review time.</p>
       </div>
       <div class="premium-card">
         <h3>What that service includes</h3>
-        <p>Custom layout work covers section planning, design interpretation, responsive behavior, and additional QA so the final site still feels intentional on desktop and mobile.</p>
+        <p>Custom layout work covers homepage wireframing, section planning, design interpretation, responsive behavior, and additional QA so the final site still feels intentional on desktop and mobile.</p>
       </div>
     </div>
   </section>
@@ -112,7 +94,7 @@ import { serviceItems } from '../../data/offer-site';
   <section class="content-section care-band">
     <div class="container split">
       <h2>Ready for a launch plan?</h2>
-      <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
+      <a class="button-primary" href={sitePath('offer-site/contact')}>Request a Launch Plan</a>
     </div>
   </section>
 </MarketingLayout>

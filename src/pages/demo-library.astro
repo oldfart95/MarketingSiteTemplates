@@ -6,8 +6,8 @@ import { sitePath } from '../lib/paths';
 <MarketingLayout title="Demo Library | FrontDoor Web Co." description="Case-study-style local business website examples.">
   <section class="content-section"><div class="container prose">
     <p class="eyebrow">Demo library</p>
-    <h1>Three polished local business examples.</h1>
-    <p>Browse the service business, care organization, and professional advisory examples as case studies for how a credibility website can feel in different markets.</p>
+    <h1>Sample builds for local business websites.</h1>
+    <p>These are fictional demo businesses built to show structure, tone, and page depth. Use the Starter-style sample to judge the focused launch, then compare the Professional expanded site for deeper proof, resources, and service options.</p>
   </div></section>
   <section class="content-section muted-bg">
     <div class="container case-grid">
@@ -18,12 +18,13 @@ import { sitePath } from '../lib/paths';
           <h2>{business.businessName}</h2>
           <p>{business.problemSolved}</p>
           <dl>
+            <div><dt>Demo status</dt><dd>Fictional sample business</dd></div>
             <div><dt>Ideal client</dt><dd>{business.idealClient}</dd></div>
             <div><dt>Key pages</dt><dd>{business.keyPages.join(', ')}</dd></div>
           </dl>
           <div class="cta-row">
-            <a class="button-primary" href={sitePath(`examples/${business.slug}/`)}>View example</a>
-            <a class="button-secondary" href={sitePath(`premium/${business.slug}/`)}>View expanded site</a>
+            <a class="button-primary" href={sitePath(`examples/${business.slug}/`)}>View Starter-style site</a>
+            <a class="button-secondary" href={sitePath(`premium/${business.slug}/`)}>View Professional expanded site</a>
           </div>
         </article>
       ))}
