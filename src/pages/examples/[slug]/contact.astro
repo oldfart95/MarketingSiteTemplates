@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`Contact | ${business.businessName}`}>
+  <h1 class="text-3xl font-bold">Contact</h1>
+  <p class="mt-2 text-slate-600">Fast response for local clients in {business.serviceArea.join(', ')}.</p>
+  <div class="mt-6 rounded-xl border p-6 space-y-2">
+    <p><strong>Phone:</strong> <a href={`tel:${business.phone}`} class="underline">{business.phone}</a></p>
+    <p><strong>Email:</strong> <a href={`mailto:${business.email}`} class="underline">{business.email}</a></p>
+    <p><strong>Address:</strong> {business.address}</p>
+    <p><strong>Service Area:</strong> {business.serviceArea.join(', ')}</p>
+  </div>
+</BaseLayout>

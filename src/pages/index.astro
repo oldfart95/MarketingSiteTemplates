@@ -1,0 +1,4 @@
+---
+import { businesses } from '../data/templates';
+---
+<html><body style="font-family:Arial;padding:2rem"><h1>Template Examples</h1><ul>{businesses.map((b)=> <li><a href={`/examples/${b.slug}/`}>{b.businessName} ({b.templateType})</a></li>)}</ul></body></html>

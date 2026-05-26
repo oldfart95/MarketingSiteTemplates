@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`About | ${business.businessName}`}>
+  <h1 class="text-3xl font-bold">About & Trust</h1>
+  <p class="mt-4 text-slate-700 max-w-3xl">{business.about}</p>
+  <section class="mt-8 rounded-xl p-6" style={`background:${business.theme.surface}`}>
+    <h2 class="text-xl font-semibold">Why Local Clients Choose Us</h2>
+    <ul class="mt-4 list-disc pl-6 text-slate-700 space-y-1">
+      <li>Prompt communication and transparent pricing.</li>
+      <li>Licensed/qualified team and clear next steps.</li>
+      <li>Respectful, community-first service approach.</li>
+    </ul>
+  </section>
+</BaseLayout>

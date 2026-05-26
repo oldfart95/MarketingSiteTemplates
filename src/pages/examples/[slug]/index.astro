@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business}>
+  <section class="grid gap-8 md:grid-cols-2 items-center">
+    <div>
+      <p class="text-sm uppercase tracking-wider" style={`color:${business.theme.secondary}`}>{business.city}</p>
+      <h1 class="text-4xl font-bold mt-2">{business.tagline}</h1>
+      <p class="mt-4 text-slate-600">Serving {business.serviceArea.join(', ')} with trusted local support.</p>
+      <div class="mt-6 flex gap-3">
+        <a href="/contact" class="rounded-md px-4 py-3 text-white" style={`background:${business.theme.secondary}`}>{business.primaryCTA}</a>
+        <a href="/proof" class="rounded-md border px-4 py-3">{business.secondaryCTA}</a>
+      </div>
+    </div>
+    <img src={business.galleryImages[0].src} alt={business.galleryImages[0].alt} class="h-72 w-full rounded-xl object-cover" loading="eager" />
+  </section>
+  <section class="mt-12">
+    <h2 class="text-2xl font-semibold">Popular Services</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">{business.services.map((service) => <article class="rounded-lg border p-4"><h3 class="font-semibold">{service.name}</h3><p class="text-sm text-slate-600 mt-2">{service.description}</p></article>)}</div>
+  </section>
+</BaseLayout>
