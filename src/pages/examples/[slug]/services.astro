@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { businesses, getBusiness } from '../../../data/templates';
+export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
+const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+---
+<BaseLayout business={business} pageTitle={`Services | ${business.businessName}`}>
+  <h1 class="text-3xl font-bold">Services</h1>
+  <p class="mt-2 text-slate-600">Simple, easy-to-update service descriptions for local SEO landing pages.</p>
+  <div class="mt-8 grid gap-5">{business.services.map((service) => <section class="rounded-xl border p-6"><h2 class="text-xl font-semibold">{service.name}</h2><p class="mt-2 text-slate-600">{service.description}</p></section>)}</div>
+</BaseLayout>

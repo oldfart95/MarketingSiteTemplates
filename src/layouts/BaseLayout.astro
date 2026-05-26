@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+const { business, pageTitle, pageDescription } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle ?? business.seo.title}</title>
+    <meta name="description" content={pageDescription ?? business.seo.description} />
+  </head>
+  <body>
+    <header class="border-b" style={`background:${business.theme.surface}`}>
+      <div class="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+        <div>
+          <p class="font-semibold text-lg" style={`color:${business.theme.primary}`}>{business.businessName}</p>
+          <p class="text-sm text-slate-600">{business.tagline}</p>
+        </div>
+        <a href={`tel:${business.phone}`} class="rounded-md px-4 py-2 text-white font-medium" style={`background:${business.theme.secondary}`}>{business.phone}</a>
+      </div>
+      <nav class="mx-auto max-w-6xl px-4 pb-4 flex gap-4 text-sm">
+        <a href={`/examples/${business.slug}/`} class="hover:underline">Home</a>
+        <a href={`/examples/${business.slug}/services`} class="hover:underline">Services</a>
+        <a href={`/examples/${business.slug}/about`} class="hover:underline">About</a>
+        <a href={`/examples/${business.slug}/proof`} class="hover:underline">Gallery & Testimonials</a>
+        <a href={`/examples/${business.slug}/contact`} class="hover:underline">Contact</a>
+      </nav>
+    </header>
+    <main class="mx-auto max-w-6xl px-4 py-10">
+      <slot />
+    </main>
+    <footer class="border-t bg-slate-50">
+      <div class="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-600">
+        <p>{business.businessName} • {business.address}</p>
+        <p>Serving {business.serviceArea.join(', ')}</p>
+      </div>
+    </footer>
+  </body>
+</html>
