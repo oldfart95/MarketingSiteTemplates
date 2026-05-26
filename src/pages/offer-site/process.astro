@@ -1,5 +1,21 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+
+const launchSteps = [
+  ['Intake', 'Business details, services, audience, proof points, photos, copy readiness, and desired calls to action.'],
+  ['Draft', 'A complete first version with page flow, copy structure, visual direction, and responsive layout.'],
+  ['Review', 'One focused revision round to correct facts, tighten wording, adjust images, and refine conversion details.'],
+  ['Launch', 'Static deployment, final checks, and handoff details for the live site.'],
+  ['Care', 'Optional monthly support for edits, new content, and ongoing improvement.'],
+];
+
+const copySteps = [
+  ['Gather raw material', 'Bring current copy, rough notes, service lists, reviews, photos, brochures, or honest answers to intake questions.'],
+  ['Interview or intake form', 'If the message is not clear yet, we use a guided form or short interview to pull out the useful details.'],
+  ['Draft copy', 'Homepage messaging, service descriptions, FAQs, trust points, and calls to action are shaped into plain-English website copy.'],
+  ['Client fact-check', 'You review the draft for accuracy before launch, especially claims, licenses, guarantees, service areas, and proof.'],
+  ['Final polish', 'Copy is tightened for clarity, tone, local search structure, and placement before the build is finalized.'],
+];
 ---
 <MarketingLayout title="Process | Website Factory" description="The professional website launch process from intake to care.">
   <section class="content-section"><div class="container prose">
@@ -9,13 +25,20 @@ import MarketingLayout from '../../layouts/MarketingLayout.astro';
   </div></section>
   <section class="content-section muted-bg">
     <div class="container timeline-list timeline-list--wide">
-      {[
-        ['Intake', 'Business details, services, audience, proof points, photos, and desired calls to action.'],
-        ['Draft', 'A complete first version with page flow, copy structure, visual direction, and responsive layout.'],
-        ['Review', 'One focused revision round to tighten wording, images, priorities, and conversion details.'],
-        ['Launch', 'Static deployment, final checks, and handoff details for the live site.'],
-        ['Care', 'Optional monthly support for edits, new content, and ongoing improvement.']
-      ].map(([title, description], index) => (
+      {launchSteps.map(([title, description], index) => (
+        <article><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Copy process</p>
+      <h2>If the words are not ready, the process is still simple.</h2>
+      <p>You do not need to be a good writer. You need accurate facts, honest answers, and a willingness to review the copy before launch.</p>
+    </div>
+    <div class="container timeline-list timeline-list--wide">
+      {copySteps.map(([title, description], index) => (
         <article><span>0{index + 1}</span><strong>{title}</strong><p>{description}</p></article>
       ))}
     </div>

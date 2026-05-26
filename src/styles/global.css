@@ -1276,6 +1276,44 @@ h3 {
   grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
 }
 
+.package-ladder-section {
+  background:
+    linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+.package-ladder {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.package-card {
+  position: relative;
+  min-height: 100%;
+}
+
+.package-card--recommended {
+  border-color: #16a34a;
+  box-shadow: 0 22px 60px rgba(22, 163, 74, 0.16);
+}
+
+.package-card__top {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.recommendation-badge {
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #14532d;
+  font-size: 0.72rem;
+  font-weight: 850;
+  padding: 0.32rem 0.55rem;
+  white-space: nowrap;
+}
+
 .price-card,
 .faq-card,
 .resource-card,
@@ -1288,6 +1326,21 @@ h3 {
   margin: 0.5rem 0 0.75rem;
   color: #0f172a;
   font-size: 1.4rem;
+}
+
+.copy-note {
+  margin-top: 1rem;
+  color: #475569;
+  font-weight: 650;
+}
+
+.light-panel {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.light-panel p {
+  color: #475569;
 }
 
 .trust-card-grid {

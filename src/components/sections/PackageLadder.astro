@@ -1,0 +1,31 @@
+---
+import { sitePath } from '../../lib/paths';
+import { offerPackages } from '../../data/offer-site';
+
+const { heading = 'Choose the right launch path', intro = 'Each tier has a different job, from getting credible fast to translating a custom layout into a polished launch.' } = Astro.props;
+---
+
+<section class="content-section package-ladder-section" aria-labelledby="package-ladder-heading">
+  <div class="container section-heading">
+    <p class="eyebrow">Package ladder</p>
+    <h2 id="package-ladder-heading">{heading}</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="container package-ladder">
+    {offerPackages.map((pkg) => (
+      <article class={`price-card package-card${pkg.recommended ? ' package-card--recommended' : ''}`}>
+        <div class="package-card__top">
+          <span>{pkg.eyebrow}</span>
+          {pkg.recommended && <strong class="recommendation-badge">Best fit for most launches</strong>}
+        </div>
+        <h3>{pkg.name}</h3>
+        <strong>{pkg.price}</strong>
+        <p>{pkg.bestFor}</p>
+        <ul>
+          {pkg.includes.map((item) => <li>{item}</li>)}
+        </ul>
+        <a class={pkg.recommended ? 'button-primary' : 'button-secondary'} href={sitePath('offer-site/contact')}>{pkg.ctaLabel}</a>
+      </article>
+    ))}
+  </div>
+</section>

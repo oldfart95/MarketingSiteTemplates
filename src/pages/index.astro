@@ -1,6 +1,66 @@
 ---
 import MarketingLayout from '../layouts/MarketingLayout.astro';
+import PackageLadder from '../components/sections/PackageLadder.astro';
 import { sitePath } from '../lib/paths';
+import { copywritingOptions } from '../data/offer-site';
+
+const includedItems = [
+  {
+    title: '4-5 core pages',
+    description: 'Home, services, about/trust, proof or gallery, and contact pages arranged around how local customers actually decide.',
+  },
+  {
+    title: 'Copywriting structure',
+    description: 'Headlines, service descriptions, FAQs, and calls to action shaped from real business details.',
+  },
+  {
+    title: 'Mobile-first design',
+    description: 'Pages designed to be easy to read, tap, and contact from a phone.',
+  },
+  {
+    title: 'Local SEO basics',
+    description: 'Clear page titles, service language, location context, and clean structure for local search visibility.',
+  },
+  {
+    title: 'Contact flow',
+    description: 'Phone, form, service-area details, and next-step language placed where prospects need them.',
+  },
+  {
+    title: 'Gallery and testimonial setup',
+    description: 'A place for reviews, project photos, before/after examples, or trust proof.',
+  },
+  {
+    title: 'Static deployment',
+    description: 'Fast, low-maintenance pages that do not require a heavy backend.',
+  },
+  {
+    title: 'One revision round',
+    description: 'A focused review pass to correct facts, tighten copy, and polish layout before launch.',
+  },
+];
+
+const processSteps = [
+  {
+    title: 'Intake',
+    description: 'Confirm the package fit, current site problems, service priorities, assets, timeline, and any custom layout needs.',
+  },
+  {
+    title: 'Draft',
+    description: 'Build the first static version with page structure, copy direction, visual hierarchy, proof sections, and contact flow.',
+  },
+  {
+    title: 'Review',
+    description: 'Walk through the draft, collect one organized revision round, and tighten the parts that affect customer confidence.',
+  },
+  {
+    title: 'Launch',
+    description: 'Prepare metadata, deploy the static site, check mobile behavior, and make sure inquiry paths work as expected.',
+  },
+  {
+    title: 'Care',
+    description: 'Keep the site fresh with small edits, new photos, seasonal updates, page improvements, and priority support.',
+  },
+];
 ---
 <MarketingLayout title="Professional Websites for Local Businesses | Website Factory" description="Professional local business website launches starting at $3,500.">
   <section class="hero-section offer-hero">
@@ -34,21 +94,54 @@ import { sitePath } from '../lib/paths';
       <p>The work is scoped around the pieces a local business needs before a prospect trusts the call button.</p>
     </div>
     <div class="container card-grid">
-      {['4-5 core pages', 'Copywriting structure', 'Mobile-first design', 'Local SEO basics', 'Contact flow', 'Gallery and testimonial setup', 'Static deployment', 'One revision round'].map((item) => (
-        <article class="card premium-card"><h3>{item}</h3><p>Planned so the site feels clear, credible, and ready for real prospects.</p></article>
+      {includedItems.map((item) => (
+        <article class="card premium-card"><h3>{item.title}</h3><p>{item.description}</p></article>
       ))}
     </div>
   </section>
 
+  <PackageLadder />
+
+  <section class="content-section muted-bg">
+    <div class="container section-heading">
+      <p class="eyebrow">Copywriting support</p>
+      <h2>Need help with the words too?</h2>
+      <p>Many local businesses do not have polished website copy ready. That is normal. The process can include a short intake or interview, service clarification, homepage messaging, service copy, FAQs, and calls to action.</p>
+      <p>The goal is not fancy marketing language. It is clear, truthful, fact-checked copy that helps prospects understand, trust, and contact the business.</p>
+    </div>
+    <div class="container card-grid">
+      {copywritingOptions.map((option) => (
+        <article class="premium-card">
+          <h3>{option.name}</h3>
+          <p><strong>{option.bestFor}</strong></p>
+          <p>{option.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Custom layout</p>
+        <h2>Have a sketch or custom layout?</h2>
+        <p>Sketches, mood boards, and custom page structures are welcome. They move the project into the Custom Layout Build tier because the work requires custom design translation rather than the standard launch system.</p>
+      </div>
+      <div class="panel light-panel">
+        <h3>Why it costs more</h3>
+        <p>Custom layout work adds planning for page composition, responsive interpretation, edge cases across screen sizes, and extra QA before launch.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="content-section">
     <div class="container comparison-section">
-      <p class="eyebrow">Starter Site vs. Professional Launch</p>
-      <h2>Starter gets you online credibly. Professional helps customers understand, trust, and choose you.</h2>
+      <p class="eyebrow">Starter Credibility Site vs. Professional Launch</p>
+      <h2>Starter makes you credible online. Professional helps customers understand, trust, and choose you.</h2>
       <p class="comparison-intro">If you need a premium web presence fast, Starter is the right move. If you need your website to explain higher-value work and reduce buyer hesitation, Professional is built for that job.</p>
       <div class="comparison-grid">
         <article class="comparison-card starter">
-          <h3>Starter Website</h3>
+          <h3>Starter Credibility Site</h3>
           <p>Best for businesses that need a clean, credible web presence quickly.</p>
           <ul>
             <li>4-5 core pages</li>
@@ -110,8 +203,8 @@ import { sitePath } from '../lib/paths';
         <p>A stronger site reduces doubt, explains the value of your service, shows proof, and gives qualified prospects a low-friction next step. That is the difference between a brochure and a credibility asset.</p>
       </div>
       <div class="timeline-list">
-        {['Intake', 'Draft', 'Review', 'Launch', 'Care'].map((step, index) => (
-          <article><span>0{index + 1}</span><strong>{step}</strong><p>A focused step that keeps the project moving without turning into a months-long redesign.</p></article>
+        {processSteps.map((step, index) => (
+          <article><span>0{index + 1}</span><strong>{step.title}</strong><p>{step.description}</p></article>
         ))}
       </div>
     </div>

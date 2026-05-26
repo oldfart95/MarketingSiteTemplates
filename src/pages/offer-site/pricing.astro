@@ -1,6 +1,8 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+import PackageLadder from '../../components/sections/PackageLadder.astro';
 import { sitePath } from '../../lib/paths';
+import { copywritingAddOns } from '../../data/offer-site';
 ---
 <MarketingLayout title="Pricing | Website Factory" description="Professional local business website packages starting at $3,500.">
   <section class="content-section"><div class="container prose">
@@ -9,48 +11,16 @@ import { sitePath } from '../../lib/paths';
     <p>A clear anchor package for businesses that need more than a starter page and less than a bloated agency engagement.</p>
   </div></section>
 
-  <section class="content-section muted-bg">
-    <div class="container pricing-grid">
-      <article class="price-card">
-        <span>Fast credibility</span>
-        <h2>Starter Website</h2>
-        <strong>Starting at $1,500</strong>
-        <p>Clean 4-5 page web presence for businesses that need to look credible quickly, explain the basics, and give customers a clear way to reach out.</p>
-        <a class="button-secondary" href={sitePath('offer-site/contact')}>Ask About Starter</a>
-      </article>
-      <article class="price-card">
-        <span>Core package</span>
-        <h2>Professional Website Launch</h2>
-        <strong>Starting at $3,500</strong>
-        <p>4-5 page credibility website with content structure, mobile design, local SEO basics, contact flow, deployment, and one revision round.</p>
-        <a class="button-primary" href={sitePath('offer-site/contact')}>Start Project Intake</a>
-      </article>
-      <article class="price-card">
-        <span>After launch</span>
-        <h2>Monthly Care</h2>
-        <strong>Custom monthly support</strong>
-        <p>Content edits, new photos, seasonal updates, landing-page improvements, and priority support after the site is live.</p>
-        <a class="button-secondary" href={sitePath('offer-site/contact')}>Ask About Care</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="content-section">
-    <div class="container card-grid">
-      {['Copy and structure', 'Design polish', 'Local trust proof', 'Launch support'].map((item) => (
-        <article class="card premium-card"><h3>{item}</h3><p>Included so the finished site feels substantial, useful, and ready for real prospects.</p></article>
-      ))}
-    </div>
-  </section>
+  <PackageLadder heading="Choose the right launch path" intro="Starter, Professional, Custom Layout, and Monthly Care are separate offers with different levels of strategy, design translation, and ongoing support." />
 
   <section class="content-section">
     <div class="container comparison-section" aria-labelledby="starter-vs-professional">
-      <p class="eyebrow">Starter Site vs. Professional Launch</p>
-      <h2 id="starter-vs-professional">Starter gets you online credibly. Professional helps customers understand, trust, and choose you.</h2>
+      <p class="eyebrow">Starter Credibility Site vs. Professional Launch</p>
+      <h2 id="starter-vs-professional">Starter makes you credible online. Professional helps customers understand, trust, and choose you.</h2>
       <p class="comparison-intro">Starter is the fast credibility move. Professional is for owners who need the website to explain value, handle objections, and make a higher-value service feel easier to choose.</p>
       <div class="comparison-grid">
         <article class="comparison-card starter">
-          <h3>Starter Website</h3>
+          <h3>Starter Credibility Site</h3>
           <p>Best for businesses that need a clean, credible web presence quickly.</p>
           <ul>
             <li>4-5 core pages</li>
@@ -76,6 +46,41 @@ import { sitePath } from '../../lib/paths';
           </ul>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="content-section muted-bg">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Custom layout</p>
+        <h2>Have a sketch or custom layout?</h2>
+        <p>Sketches, mood boards, and custom page structures are welcome, but they move the project into the Custom Layout Build tier. That work requires custom design translation instead of the standard launch system.</p>
+      </div>
+      <div class="premium-card">
+        <h3>What changes in scope</h3>
+        <p>Custom layout projects include layout planning, responsive interpretation, translation from rough direction into buildable sections, and extra QA for pages that do not follow the standard template structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container section-heading">
+      <p class="eyebrow">Copywriting add-on</p>
+      <h2>What if the website copy is not ready?</h2>
+      <p>If you already have usable copy, we polish and place it. If you have rough notes, we can turn those notes into website-ready pages. If there is no usable copy yet, deeper copywriting and positioning can be added to the project.</p>
+    </div>
+    <div class="container pricing-grid">
+      {copywritingAddOns.map((item) => (
+        <article class="price-card">
+          <span>Copy support</span>
+          <h3>{item.name}</h3>
+          <strong>{item.price}</strong>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+    <div class="container copy-note">
+      <p>Final copywriting scope depends on how much accurate raw material you provide. We do not invent credentials, guarantees, licenses, years in business, or claims you have not confirmed. Client review and fact-checking are required before launch.</p>
     </div>
   </section>
 

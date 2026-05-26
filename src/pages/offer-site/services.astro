@@ -1,6 +1,7 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 import { sitePath } from '../../lib/paths';
+import { serviceItems } from '../../data/offer-site';
 ---
 <MarketingLayout title="Services | Website Factory" description="Professional website launch deliverables for local businesses.">
   <section class="content-section"><div class="container prose">
@@ -11,8 +12,8 @@ import { sitePath } from '../../lib/paths';
 
   <section class="content-section muted-bg">
     <div class="container card-grid">
-      {['Home page strategy', 'Services page structure', 'About and trust messaging', 'Gallery or proof setup', 'Contact flow', 'Local SEO basics'].map((item) => (
-        <article class="card premium-card"><h2>{item}</h2><p>Built around customer questions, local credibility, and a clear next step.</p></article>
+      {serviceItems.map((item) => (
+        <article class="card premium-card"><h2>{item.title}</h2><p>{item.description}</p></article>
       ))}
     </div>
   </section>
@@ -35,14 +36,37 @@ import { sitePath } from '../../lib/paths';
     </div>
   </section>
 
+  <section class="content-section muted-bg">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Copywriting</p>
+        <h2>Website Copywriting & Message Cleanup</h2>
+        <p>Some clients arrive with polished copy. Others bring rough notes, old brochures, scattered service lists, or no usable copy at all. The copy process is guided and practical.</p>
+      </div>
+      <div class="premium-card">
+        <h3>What it can include</h3>
+        <ul>
+          <li>Intake questions and a short interview</li>
+          <li>Homepage positioning</li>
+          <li>Service descriptions</li>
+          <li>About and trust copy</li>
+          <li>FAQ writing</li>
+          <li>Calls to action</li>
+          <li>Light local SEO structure</li>
+          <li>Tone cleanup so the site sounds professional but still like the business</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <section class="content-section">
     <div class="container comparison-section" aria-labelledby="starter-vs-pro-launch-services">
-      <p class="eyebrow">Starter Site vs. Professional Launch</p>
-      <h2 id="starter-vs-pro-launch-services">Starter gets you online credibly. Professional helps customers understand, trust, and choose you.</h2>
+      <p class="eyebrow">Starter Credibility Site vs. Professional Launch</p>
+      <h2 id="starter-vs-pro-launch-services">Starter makes you credible online. Professional helps customers understand, trust, and choose you.</h2>
       <p class="comparison-intro">Starter is best when you need a clean presence quickly. Professional is built for businesses that need stronger messaging, proof, and a more persuasive path to inquiry.</p>
       <div class="comparison-grid">
         <article class="comparison-card starter">
-          <h3>Starter Website</h3>
+          <h3>Starter Credibility Site</h3>
           <p>Best for businesses that need a clean, credible web presence quickly.</p>
           <ul>
             <li>4-5 core pages</li>
@@ -67,6 +91,20 @@ import { sitePath } from '../../lib/paths';
             <li>Better suited for businesses trying to justify higher-value services</li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section muted-bg">
+    <div class="container two-col">
+      <div>
+        <p class="eyebrow">Custom layout</p>
+        <h2>Have a sketch or custom layout?</h2>
+        <p>Bring the sketch, mood board, wireframe, or custom page structure. If the project needs custom design translation instead of the standard launch system, it belongs in the Custom Layout Build tier.</p>
+      </div>
+      <div class="premium-card">
+        <h3>What that service includes</h3>
+        <p>Custom layout work covers section planning, design interpretation, responsive behavior, and additional QA so the final site still feels intentional on desktop and mobile.</p>
       </div>
     </div>
   </section>
