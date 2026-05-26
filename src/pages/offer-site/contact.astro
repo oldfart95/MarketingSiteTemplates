@@ -4,15 +4,31 @@ import MarketingLayout from '../../layouts/MarketingLayout.astro';
 <MarketingLayout title="Start Project | Website Factory" description="Start a professional website launch for a local business.">
   <section class="content-section"><div class="container prose">
     <p class="eyebrow">Start Project Intake</p>
-    <h1>Book a Website Launch Review</h1>
-    <p>Share the essentials and start a conversation about whether the Professional Website Launch is the right fit.</p>
+    <h1>Request a Website Launch Review</h1>
+    <p>Share what is working, what feels dated, and what your next website needs to help customers do. This intake is designed for a focused launch conversation, not a generic quote form.</p>
     <p>Email intake fallback: <a href="mailto:hello@example.com?subject=Website%20Launch%20Review">hello@example.com</a></p>
-    <form aria-label="Project intake form" class="intake-form">
+    <form aria-label="Website launch consultation request" class="intake-form">
       <label>Name<input type="text" name="name" required /></label>
       <label>Business Name<input type="text" name="business" required /></label>
       <label>Website or current online presence<input type="url" name="website" /></label>
-      <label>What needs to improve?<textarea name="needs" rows="5" required></textarea></label>
-      <button type="submit" class="button-primary">Submit Intake</button>
+      <label>Package Interest
+        <select name="package">
+          <option>Professional Website Launch - from $3,500</option>
+          <option>Starter Website - from $1,500</option>
+          <option>Monthly Care</option>
+          <option>Not sure yet</option>
+        </select>
+      </label>
+      <label>Timeline
+        <select name="timeline">
+          <option>Ready to start this month</option>
+          <option>Planning for the next 60 days</option>
+          <option>Researching options</option>
+        </select>
+      </label>
+      <label>What should the new site improve?<textarea name="needs" rows="6" placeholder="Tell me about your services, ideal customers, current pain points, and what a successful launch would change." required></textarea></label>
+      <label>Best Contact Method<input type="text" name="contact" placeholder="Email, phone, or preferred next step" required /></label>
+      <button type="submit" class="button-primary">Request Launch Review</button>
     </form>
   </div></section>
 </MarketingLayout>
