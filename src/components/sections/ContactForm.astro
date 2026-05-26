@@ -1,10 +1,25 @@
 ---
 import type { BusinessProfile } from '../../types/site';
+import { getFormAttributes, getFormSettings, getMailtoHref } from '../../lib/forms';
 type Props = { business: BusinessProfile };
 const { business } = Astro.props as Props;
+const formSettings = getFormSettings();
+const formAttributes = getFormAttributes(formSettings);
+const fallbackEmail = formSettings.intakeEmail || business.email;
+const hasEndpoint = Boolean(formSettings.formActionUrl);
+const hasFallbackEmail = Boolean(fallbackEmail);
 ---
-<form class="intake-form" name="contact" method="POST" data-netlify="true" action={`mailto:${business.email}`}>
+<form class="intake-form" name="contact" {...formAttributes}>
   <input type="hidden" name="form-name" value="contact" />
+  <input type="hidden" name="form-provider" value={formSettings.formProviderName || 'configured-endpoint'} />
+  {hasEndpoint ? (
+    <p class="form-status">{formSettings.formProviderName ? `Submits through ${formSettings.formProviderName}.` : 'Submits through the configured form endpoint.'} {formSettings.formSuccessMessage}</p>
+  ) : (
+    <p class="form-status form-status--fallback">
+      {formSettings.formFallbackMessage}
+      {hasFallbackEmail && <span> Email <a href={getMailtoHref(fallbackEmail, `${business.businessName} website inquiry`)}>{fallbackEmail}</a> with these details.</span>}
+    </p>
+  )}
   <label>
     Name
     <input name="name" type="text" autocomplete="name" />
@@ -27,5 +42,5 @@ const { business } = Astro.props as Props;
     Message
     <textarea name="message" rows="5"></textarea>
   </label>
-  <button class="button button--solid" type="submit">Prepare Request</button>
+  <button class="button button--solid" type={hasEndpoint ? 'submit' : 'button'}>{hasEndpoint ? 'Send Request' : 'Prepare Request'}</button>
 </form>

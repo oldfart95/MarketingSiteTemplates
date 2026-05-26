@@ -1,8 +1,14 @@
 ---
 import PremiumLayout from '../../../layouts/PremiumLayout.astro';
 import { getPremiumBusiness, premiumBusinesses } from '../../../data/premium';
+import { getFormAttributes, getFormSettings, getMailtoHref } from '../../../lib/forms';
 export function getStaticPaths() { return premiumBusinesses.map((business) => ({ params: { slug: business.slug } })); }
 const business = getPremiumBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const formSettings = getFormSettings();
+const formAttributes = getFormAttributes(formSettings);
+const fallbackEmail = formSettings.intakeEmail || business.email;
+const hasEndpoint = Boolean(formSettings.formActionUrl);
+const hasFallbackEmail = Boolean(fallbackEmail);
 ---
 <PremiumLayout business={business} pageTitle={`Contact | ${business.businessName}`}>
   <section class="page-hero">
@@ -15,7 +21,17 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
 
   <section class="section">
     <div class="container contact-grid premium-contact-grid">
-      <form class="intake-form" method="get" action={`mailto:${business.email}`}>
+      <form class="intake-form" name="premium-contact" {...formAttributes}>
+        <input type="hidden" name="form-name" value="premium-contact" />
+        <input type="hidden" name="form-provider" value={formSettings.formProviderName || 'configured-endpoint'} />
+        {hasEndpoint ? (
+          <p class="form-status">{formSettings.formProviderName ? `Submits through ${formSettings.formProviderName}.` : 'Submits through the configured form endpoint.'} {formSettings.formSuccessMessage}</p>
+        ) : (
+          <p class="form-status form-status--fallback">
+            {formSettings.formFallbackMessage}
+            {hasFallbackEmail && <span> Email <a href={getMailtoHref(fallbackEmail, `${business.businessName} request`)}>{fallbackEmail}</a> with these details.</span>}
+          </p>
+        )}
         <label>
           Name
           <input name="name" type="text" autocomplete="name" />
@@ -38,7 +54,7 @@ const business = getPremiumBusiness(Astro.params.slug!); if (!business) return A
           Message
           <textarea name="message" rows="5"></textarea>
         </label>
-        <button class="button button--solid" type="submit">{business.primaryCTA}</button>
+        <button class="button button--solid" type={hasEndpoint ? 'submit' : 'button'}>{hasEndpoint ? business.primaryCTA : 'Prepare Request'}</button>
       </form>
 
       <aside class="detail-panel contact-sidebar">

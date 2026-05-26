@@ -1,9 +1,18 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
 import { offerSiteConfig } from '../../data/offer-site';
+import { getFormAttributes, getFormSettings, getMailtoHref } from '../../lib/forms';
 
-const intakeEmail = offerSiteConfig.intakeEmail.trim();
+const formSettings = getFormSettings();
+const formAttributes = getFormAttributes(formSettings);
+const intakeEmail = formSettings.intakeEmail;
 const intakeSubject = 'Website Launch Review';
+const hasEndpoint = Boolean(formSettings.formActionUrl);
+const hasIntakeForm = Boolean(formSettings.intakeFormUrl);
+const shouldEmbedIntakeForm = formSettings.showEmbeddedIntakeForm && Boolean(formSettings.intakeFormEmbedUrl);
+const intakeProviderLabel = formSettings.intakeFormProviderName || 'configured intake form';
+const fallbackMessage = formSettings.intakeEmailFallback || formSettings.formFallbackMessage;
+const previewOnly = !hasEndpoint;
 ---
 <MarketingLayout title="Start Project | FrontDoor Web Co." description="Start a professional website launch for a local business.">
   <section class="content-section"><div class="container prose">
@@ -11,28 +20,55 @@ const intakeSubject = 'Website Launch Review';
     <h1>Book a Website Review</h1>
     <p>Share what is working, what feels dated, and what your next website needs to help customers do. This intake is designed for a focused launch conversation, not a generic quote form.</p>
     <p>{offerSiteConfig.founderLine} If the project is a fit, the next step is a plain-English launch plan with scope, timing, and pricing confirmed before work begins.</p>
-    <p>This preview uses a static intake form. Use the prompts below to prepare your answers, then send them through the configured intake email when it is available. I usually respond within one business day.</p>
+    <p>The intake form helps gather business details, services, service area, copy readiness, photos or proof, timeline, and package interest. It does not collect passwords, payment information, or sensitive private records.</p>
+    <p>{hasIntakeForm ? `Use the ${intakeProviderLabel} intake form to send the project details. I usually respond within one business day.` : hasEndpoint ? 'Use the intake form below to send the project details through the configured form endpoint. I usually respond within one business day.' : 'This preview shows the intake questions only. Use them to prepare your answers, then send them through the configured intake email when it is available. I usually respond within one business day.'}</p>
+    {hasIntakeForm && (
+      <p><a class="button-primary" href={formSettings.intakeFormUrl}>Start Website Intake</a></p>
+    )}
     <p>
       Best intake route:
-      {intakeEmail ? (
-        <a href={`mailto:${intakeEmail}?subject=${encodeURIComponent(intakeSubject)}`}>{intakeEmail}</a>
+      {hasIntakeForm ? (
+        <span>{intakeProviderLabel}</span>
+      ) : hasEndpoint ? (
+        <span>{formSettings.formProviderName ? `Configured form endpoint via ${formSettings.formProviderName}` : 'Configured form endpoint'}</span>
+      ) : intakeEmail ? (
+        <a href={getMailtoHref(intakeEmail, intakeSubject)}>{intakeEmail}</a>
       ) : (
-        <span>Use the project intake form below</span>
+        <span>{fallbackMessage}</span>
       )}
     </p>
-    <form aria-label="Website launch consultation request" class="intake-form">
+
+    {shouldEmbedIntakeForm && (
+      <div class="intake-embed" aria-label={`${intakeProviderLabel} embedded intake form`}>
+        <iframe src={formSettings.intakeFormEmbedUrl} title={`${intakeProviderLabel} website intake form`} loading="lazy">Loading intake form...</iframe>
+      </div>
+    )}
+
+    <form aria-label="Website launch consultation request" class="intake-form" name="website-launch-review" {...formAttributes}>
+      <input type="hidden" name="form-name" value="website-launch-review" />
+      <input type="hidden" name="form-provider" value={formSettings.formProviderName || 'configured-endpoint'} />
+      {hasIntakeForm ? (
+        <p class="form-status">The questions below are a preview of what the website intake asks. Use the Start Website Intake button above to submit the real intake form.</p>
+      ) : hasEndpoint ? (
+        <p class="form-status">{formSettings.formSuccessMessage}</p>
+      ) : (
+        <p class="form-status form-status--fallback">
+          {fallbackMessage}
+          {intakeEmail && <span> Email <a href={getMailtoHref(intakeEmail, intakeSubject)}>{intakeEmail}</a> with these details.</span>}
+        </p>
+      )}
       <fieldset>
         <legend>Contact basics</legend>
-        <label>Name<input type="text" name="name" required /></label>
-        <label>Business Name<input type="text" name="business" required /></label>
-        <label>Website or current online presence<input type="url" name="website" /></label>
-        <label>Best Contact Method<input type="text" name="contact" placeholder="Email, phone, or preferred next step" required /></label>
+        <label>Name<input type="text" name="name" required disabled={previewOnly} /></label>
+        <label>Business Name<input type="text" name="business" required disabled={previewOnly} /></label>
+        <label>Website or current online presence<input type="url" name="website" disabled={previewOnly} /></label>
+        <label>Best Contact Method<input type="text" name="contact" placeholder="Email, phone, or preferred next step" required disabled={previewOnly} /></label>
       </fieldset>
 
       <fieldset>
         <legend>Project fit</legend>
         <label>Package Interest
-          <select name="package">
+          <select name="package" disabled={previewOnly}>
             <option>Professional Website Launch - from $3,500</option>
             <option>Starter Credibility Site - from $1,500</option>
             <option>Custom Layout Build - from $7,000</option>
@@ -41,14 +77,14 @@ const intakeSubject = 'Website Launch Review';
           </select>
         </label>
         <label>Timeline
-          <select name="timeline">
+          <select name="timeline" disabled={previewOnly}>
             <option>Ready to start this month</option>
             <option>Planning for the next 60 days</option>
             <option>Researching options</option>
           </select>
         </label>
         <label>Do you already have website copy?
-          <select name="copy-readiness">
+          <select name="copy-readiness" disabled={previewOnly}>
             <option>Yes, mostly ready</option>
             <option>Some notes, but needs help</option>
             <option>No, I need copywriting help</option>
@@ -58,19 +94,19 @@ const intakeSubject = 'Website Launch Review';
 
       <fieldset>
         <legend>Business details</legend>
-        <label>Main Services<textarea name="main-services" rows="4" placeholder="List the main services you want the site to explain." required></textarea></label>
-        <label>Service Area<textarea name="service-area" rows="3" placeholder="Cities, neighborhoods, counties, or regions you serve." required></textarea></label>
-        <label>Why Customers Choose You<textarea name="why-choose-you" rows="4" placeholder="Examples: responsiveness, clean work, licensed team, family-owned, specialized experience, warranties, or careful communication. Only include claims you can confirm."></textarea></label>
+        <label>Main Services<textarea name="main-services" rows="4" placeholder="List the main services you want the site to explain." required disabled={previewOnly}></textarea></label>
+        <label>Service Area<textarea name="service-area" rows="3" placeholder="Cities, neighborhoods, counties, or regions you serve." required disabled={previewOnly}></textarea></label>
+        <label>Why Customers Choose You<textarea name="why-choose-you" rows="4" placeholder="Examples: responsiveness, clean work, licensed team, family-owned, specialized experience, warranties, or careful communication. Only include claims you can confirm." disabled={previewOnly}></textarea></label>
       </fieldset>
 
       <fieldset>
         <legend>Trust and questions</legend>
-        <label>Common Customer Questions<textarea name="customer-questions" rows="4" placeholder="Questions prospects ask before hiring you, comparing options, or booking a quote."></textarea></label>
-        <label>Proof Available<textarea name="proof-available" rows="4" placeholder="Reviews, photos, testimonials, certifications, licenses, before/after examples, or other trust proof."></textarea></label>
-        <label>What should the new site improve?<textarea name="needs" rows="6" placeholder="Tell me about your services, ideal customers, current pain points, and what a successful launch would change." required></textarea></label>
+        <label>Common Customer Questions<textarea name="customer-questions" rows="4" placeholder="Questions prospects ask before hiring you, comparing options, or booking a quote." disabled={previewOnly}></textarea></label>
+        <label>Proof Available<textarea name="proof-available" rows="4" placeholder="Reviews, photos, testimonials, certifications, licenses, before/after examples, or other trust proof." disabled={previewOnly}></textarea></label>
+        <label>What should the new site improve?<textarea name="needs" rows="6" placeholder="Tell me about your services, ideal customers, current pain points, and what a successful launch would change." required disabled={previewOnly}></textarea></label>
       </fieldset>
 
-      <button type="submit" class="button-primary">Request Launch Review</button>
+      <button type={hasEndpoint ? 'submit' : 'button'} class="button-primary">{hasEndpoint ? 'Request Launch Review' : hasIntakeForm ? 'Preview Questions Only' : 'Prepare Launch Review'}</button>
     </form>
   </div></section>
 </MarketingLayout>

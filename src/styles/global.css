@@ -728,6 +728,44 @@ h3 {
   padding: clamp(1.15rem, 3vw, 1.6rem);
 }
 
+.form-status {
+  border: 1px solid color-mix(in srgb, var(--cta, #1d4ed8) 22%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--surface, #f8fafc) 72%, white);
+  color: var(--ink-soft, #475569);
+  font-weight: 650;
+  margin: 0;
+  padding: 0.85rem;
+}
+
+.form-status--fallback {
+  border-color: rgba(245, 158, 11, 0.38);
+  background: rgba(255, 251, 235, 0.78);
+}
+
+.form-status a {
+  color: var(--brand, #111827);
+  font-weight: 850;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.intake-embed {
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.38);
+  border-radius: 0.85rem;
+  background: #ffffff;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.08);
+  margin: 1.25rem 0;
+}
+
+.intake-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: min(78vh, 48rem);
+  border: 0;
+}
+
 .intake-form fieldset {
   display: grid;
   gap: 1rem;
@@ -766,6 +804,14 @@ h3 {
 
 .intake-form textarea {
   resize: vertical;
+}
+
+.intake-form input:disabled,
+.intake-form select:disabled,
+.intake-form textarea:disabled {
+  cursor: not-allowed;
+  background: #f8fafc;
+  color: #64748b;
 }
 
 .contact-sidebar {
