@@ -1020,6 +1020,17 @@ h3 {
   padding: 3rem 0;
 }
 
+.hero-section h1 {
+  color: #c7d8ff;
+  text-shadow:
+    0 3px 0 rgba(3, 7, 18, 0.72),
+    0 18px 38px rgba(3, 7, 18, 0.55);
+}
+
+.hero-section .eyebrow {
+  color: #79a7ff;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
