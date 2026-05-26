@@ -3,9 +3,29 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { businesses, getBusiness } from '../../../data/templates';
 export function getStaticPaths() { return businesses.map((business) => ({ params: { slug: business.slug } })); }
 const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
+const basePath = `/examples/${business.slug}`;
 ---
 <BaseLayout business={business} pageTitle={`Services | ${business.businessName}`}>
   <h1 class="text-3xl font-bold">Services</h1>
-  <p class="mt-2 text-slate-600">Simple, easy-to-update service descriptions for local SEO landing pages.</p>
-  <div class="mt-8 grid gap-5">{business.services.map((service) => <section class="rounded-xl border p-6"><h2 class="text-xl font-semibold">{service.name}</h2><p class="mt-2 text-slate-600">{service.description}</p></section>)}</div>
+  <p class="mt-2 text-slate-600 max-w-3xl">{business.about}</p>
+  <div class="mt-8 grid gap-5">
+    {business.services.map((service) => (
+      <section class="rounded-xl border p-6">
+        <h2 class="text-xl font-semibold">{service.name}</h2>
+        <p class="mt-2 text-slate-600">{service.description}</p>
+        <a href={`${basePath}/contact`} class="mt-4 inline-block underline">Ask about {service.name}</a>
+      </section>
+    ))}
+  </div>
+  <section class="mt-10 rounded-xl p-6" style={`background:${business.theme.surface}`}>
+    <h2 class="text-xl font-semibold">Common concerns</h2>
+    <div class="mt-4 grid gap-4 md:grid-cols-3">
+      {business.objections.map((item) => (
+        <article>
+          <h3 class="font-semibold">{item.concern}</h3>
+          <p class="mt-2 text-sm text-slate-600">{item.response}</p>
+        </article>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

@@ -5,7 +5,25 @@ export function getStaticPaths() { return businesses.map((business) => ({ params
 const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
 ---
 <BaseLayout business={business} pageTitle={`Proof | ${business.businessName}`}>
-  <h1 class="text-3xl font-bold">Gallery & Testimonials</h1>
-  <div class="mt-8 grid gap-6 md:grid-cols-2">{business.galleryImages.map((image) => <img src={image.src} alt={image.alt} class="rounded-xl h-64 w-full object-cover" loading="lazy" />)}</div>
-  <section class="mt-10 grid gap-4 md:grid-cols-2">{business.testimonials.map((item) => <blockquote class="rounded-xl border p-5"><p>“{item.quote}”</p><footer class="mt-3 text-sm text-slate-600">— {item.name}</footer></blockquote>)}</section>
+  <h1 class="text-3xl font-bold">Proof & Reviews</h1>
+  <p class="mt-2 text-slate-600 max-w-3xl">{business.proofIntro}</p>
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    {business.galleryImages.map((image) => <img src={image.src} alt={image.alt} class="rounded-xl h-64 w-full object-cover" loading="lazy" />)}
+  </div>
+  <section class="mt-10 grid gap-4 md:grid-cols-2">
+    {business.testimonials.map((item) => (
+      <blockquote class="rounded-xl border p-5">
+        <p>“{item.quote}”</p>
+        <footer class="mt-3 text-sm text-slate-600">— {item.name}</footer>
+      </blockquote>
+    ))}
+  </section>
+  <section class="mt-10 grid gap-4 md:grid-cols-3">
+    {business.faqs.map((item) => (
+      <article class="rounded-xl border p-5">
+        <h2 class="font-semibold">{item.question}</h2>
+        <p class="mt-2 text-sm text-slate-600">{item.answer}</p>
+      </article>
+    ))}
+  </section>
 </BaseLayout>

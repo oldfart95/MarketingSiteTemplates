@@ -5,14 +5,20 @@ export function getStaticPaths() { return businesses.map((business) => ({ params
 const business = getBusiness(Astro.params.slug!); if (!business) return Astro.redirect('/');
 ---
 <BaseLayout business={business} pageTitle={`About | ${business.businessName}`}>
-  <h1 class="text-3xl font-bold">About & Trust</h1>
+  <h1 class="text-3xl font-bold">About {business.businessName}</h1>
   <p class="mt-4 text-slate-700 max-w-3xl">{business.about}</p>
   <section class="mt-8 rounded-xl p-6" style={`background:${business.theme.surface}`}>
-    <h2 class="text-xl font-semibold">Why Local Clients Choose Us</h2>
+    <h2 class="text-xl font-semibold">What clients can count on</h2>
     <ul class="mt-4 list-disc pl-6 text-slate-700 space-y-1">
-      <li>Prompt communication and transparent pricing.</li>
-      <li>Licensed/qualified team and clear next steps.</li>
-      <li>Respectful, community-first service approach.</li>
+      {business.trustPoints.map((point) => <li>{point}</li>)}
     </ul>
+  </section>
+  <section class="mt-8 grid gap-4 md:grid-cols-2">
+    {business.faqs.slice(0, 2).map((item) => (
+      <article class="rounded-xl border p-5">
+        <h2 class="text-xl font-semibold">{item.question}</h2>
+        <p class="mt-2 text-slate-600">{item.answer}</p>
+      </article>
+    ))}
   </section>
 </BaseLayout>

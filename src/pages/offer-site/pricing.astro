@@ -1,12 +1,71 @@
 ---
 import MarketingLayout from '../../layouts/MarketingLayout.astro';
+
+const tiers = [
+  {
+    name: 'Starter Website',
+    price: 'from $1,500',
+    bestFor: 'Best for a small local business that needs a cleaner first impression and a direct path to calls or inquiries.',
+    deliverables: [
+      'Focused 3-page website structure',
+      'Homepage, services, and contact/intake page',
+      'Mobile-first layout and clear calls to action',
+      'Basic service-area and local search copy',
+      'Contact form layout and email handoff',
+      'Static deployment setup'
+    ]
+  },
+  {
+    name: 'Professional Website Launch',
+    price: 'from $3,500',
+    bestFor: 'Best for an established business that needs stronger credibility, better service positioning, and a site that can support higher-value leads.',
+    deliverables: [
+      '4-5 core pages planned around buyer intent',
+      'Copywriting structure for services, proof, objections, and FAQs',
+      'Premium mobile and desktop design rhythm',
+      'Local SEO basics for services and service areas',
+      'Contact flow built around consultation requests',
+      'Gallery or testimonial setup',
+      'Deployment and one revision round'
+    ]
+  },
+  {
+    name: 'Monthly Care',
+    price: 'from $150/month',
+    bestFor: 'Best for owners who want their website kept current without opening a fresh project for every small change.',
+    deliverables: [
+      'Routine copy, photo, and service updates',
+      'Small page edits and seasonal calls to action',
+      'Basic uptime and link checks',
+      'Light performance and accessibility review',
+      'Monthly improvement recommendations',
+      'Priority scheduling for future expansion'
+    ]
+  }
+];
 ---
 <MarketingLayout title="Pricing | Website Factory" description="Pricing tiers for Starter, Professional, and Monthly Care.">
   <section class="content-section"><div class="container prose">
-    <h1>Pricing Tiers</h1>
-    <h2>Starter Website</h2><p>Ideal for a clean relaunch with core pages and conversion-ready structure.</p>
-    <h2>Professional Website</h2><p>Adds expanded copy depth, proof presentation, and stronger service differentiation.</p>
-    <h2>Monthly Care</h2><p>Optional retained support for edits and ongoing improvements.</p>
-    <p><strong>Final pricing is scoped after intake based on page count, readiness of assets, and revision scope.</strong></p>
+    <p class="eyebrow">Clear packages for local businesses</p>
+    <h1>Pricing that matches the level of trust your website needs to create.</h1>
+    <p>Every project is scoped around the same outcome: make it easier for the right customer to understand your services, trust your business, and take the next step.</p>
+
+    <div class="grid three-col">
+      {tiers.map((tier) => (
+        <article class="card">
+          <p class="eyebrow">{tier.price}</p>
+          <h2>{tier.name}</h2>
+          <p>{tier.bestFor}</p>
+          <h3>Included deliverables</h3>
+          <ul>
+            {tier.deliverables.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <h2>How pricing is finalized</h2>
+    <p>Final pricing is confirmed after intake based on page count, copy depth, asset readiness, special layout needs, and revision scope. You will know the project range before work begins.</p>
+    <p><a class="button-primary" href="/offer-site/contact">Start Project Intake</a></p>
   </div></section>
 </MarketingLayout>
